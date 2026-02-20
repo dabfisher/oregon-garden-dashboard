@@ -8,6 +8,9 @@ import plotly.express as px
 # Initialize the app
 app = dash.Dash(__name__)
 
+# Expose Flask server for Render
+server = app.server
+
 # Layout
 app.layout = html.Div([
     html.H1("Oregon Gardening Dashboard"),
