@@ -34,6 +34,8 @@ for city, coords in cities.items():
     )
 
     response = requests.get(url)
+    print(f"{city}: {response.status_code}")
+    print(response.text[:500])
     data = response.json()
 
     df = pd.DataFrame({
@@ -45,9 +47,6 @@ for city, coords in cities.items():
 
     df["city"] = city
     all_cities.append(df)
-
-print(response.status_code)
-print(response.text)
 
 final_df = pd.concat(all_cities, ignore_index=True)
 
