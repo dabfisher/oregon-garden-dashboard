@@ -46,6 +46,9 @@ for city, coords in cities.items():
     df["city"] = city
     all_cities.append(df)
 
+print(response.status_code)
+print(response.text)
+
 final_df = pd.concat(all_cities, ignore_index=True)
 
 final_df.to_csv("data/weather_raw.csv", index=False)
