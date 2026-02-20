@@ -9,10 +9,10 @@ A live weather analytics pipeline that helps Oregon gardeners know when to plant
 - Displays insights through an interactive dashboard
 
 ## Tech Stack
-- **Python** — data ingestion and pipeline orchestration
-- **DuckDB** — local analytical database
-- **SQL** — data modeling and transformation
-- **Plotly Dash** — interactive dashboard
+- **Python**: data ingestion and pipeline orchestration
+- **DuckDB**: local analytical database
+- **SQL**: data modeling and transformation
+- **Plotly Dash**: interactive dashboard
 
 ## Pipeline Architecture
 ```
