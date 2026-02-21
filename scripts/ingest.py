@@ -4,7 +4,6 @@
 # and saves to data/weather_raw.csv
 
 import requests
-import json
 import pandas as pd
 
 # Cities
