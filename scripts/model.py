@@ -18,6 +18,12 @@ con.execute("""
     SELECT * FROM read_csv_auto('data/temp_soil_historical.csv')
 """)
 
+# Load the raw historical csv into a table 
+con.execute("""
+    CREATE OR REPLACE TABLE sun_times AS
+    SELECT * FROM read_csv_auto('data/sun_times.csv')
+""")
+
 # Determine when temperature dips into plants that can be planted
 con.execute("""
     CREATE OR REPLACE TABLE planting_window AS
@@ -119,6 +125,26 @@ con.execute("""
         ORDER BY city,date
 """)
 
+# Load the raw historical csv into a table 
+con.execute("""
+    CREATE OR REPLACE TABLE daily_data AS
+    SELECT 
+        tsh.date,
+        tsh.city,
+        sun.morning_twilight,
+        sun.sunrise,
+        sun.solar_noon,
+        sun.sunset,
+        sun.evening_twilight,
+        sun.day_length,
+        tsh.temp_min,
+        tsh.soil_temp_0_7cm,
+        tsh.soil_temp_7_to_28cm
+    FROM sun_times AS sun
+    JOIN temp_soil_historical AS tsh
+        ON tsh.date = sun.date AND tsh.city = sun.city
+""")
+
 result = con.execute("""
     SELECT * FROM avg_last_freeze_date
 """).df()
@@ -128,3 +154,6 @@ result = con.execute("""
     SELECT * FROM avg_soil_temp_daily
 """).df()
 print(result)
+
+
+
