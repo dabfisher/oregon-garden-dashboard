@@ -37,7 +37,6 @@ for city, coords in cities.items():
     if response.status_code != 200:
         print(f"{city}: failed with {response.status_code}, skipping")
         continue
-    print(f"{city}: {response.status_code}")
     print(response.text[:500])
     data = response.json()
 
