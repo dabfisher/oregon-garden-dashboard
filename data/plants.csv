@@ -1,285 +1,285 @@
-plant_id,common_name,variety_type,min_viable_temp_f,ideal_temp_min_f,ideal_temp_max_f,weeks_before_frost,direct_sow,weeks_indoor_before_transplant,days_to_maturity,square_feet_needed,sun_requirements,attracts_bees,attracts_butterflies,attracts_hummingbirds,toxic,needs_support
-1,Tomato,warm season vegetable,50,65,85,-2,False,6.0,75,4,Full Sun,True,False,False,False,True
-2,Pepper,warm season vegetable,55,70,90,-2,False,8.0,80,2,Full Sun,True,False,False,False,True
-3,Zucchini,warm season vegetable,50,65,85,1,True,,55,9,Full Sun,True,False,False,False,False
-4,Cucumber,warm season vegetable,50,65,85,1,True,,60,9,Full Sun,True,False,False,False,True
-5,Green Bean,warm season vegetable,50,60,80,1,True,,55,1,Full Sun,True,False,False,False,False
-6,Corn,warm season vegetable,50,60,85,1,True,,80,1,Full Sun,False,False,False,False,False
-7,Basil,herb,50,65,85,-1,False,4.0,30,1,Full Sun,True,True,False,False,False
-8,Kale,cool season vegetable,20,45,75,6,True,,60,2,Full Sun,True,False,False,False,False
-9,Spinach,cool season vegetable,25,45,65,6,True,,45,1,Partial Shade,True,False,False,False,False
-10,Lettuce,cool season vegetable,28,45,65,4,True,,50,1,Partial Shade,False,False,False,False,False
-11,Carrot,cool season vegetable,28,50,75,4,True,,70,1,Full Sun,True,True,False,False,False
-12,Radish,cool season vegetable,28,45,65,6,True,,30,1,Full Sun,True,False,False,False,False
-13,Beet,cool season vegetable,28,50,75,4,True,,60,1,Full Sun,True,False,False,False,False
-14,Broccoli,cool season vegetable,25,45,75,6,False,6.0,80,4,Full Sun,True,False,False,False,False
-15,Cauliflower,cool season vegetable,25,45,75,6,False,6.0,85,4,Full Sun,True,False,False,False,False
-16,Cabbage,cool season vegetable,25,45,75,6,False,6.0,80,4,Full Sun,True,False,False,False,False
-17,Pea,cool season vegetable,28,45,70,6,True,,60,1,Full Sun,True,False,False,False,False
-18,Garlic,bulb,10,40,80,8,True,,240,1,Full Sun,True,False,False,False,False
-19,Onion,bulb,20,50,80,4,False,8.0,100,1,Full Sun,True,False,False,False,False
-20,Potato,root vegetable,35,60,80,2,True,,90,4,Full Sun,True,False,False,False,False
-21,Sweet Potato,warm season vegetable,55,70,90,-2,False,6.0,100,4,Full Sun,True,True,False,False,False
-22,Winter Squash,warm season vegetable,50,65,85,1,True,,90,16,Full Sun,True,False,False,False,True
-23,Pumpkin,warm season vegetable,50,65,85,1,True,,100,16,Full Sun,True,False,False,False,False
-24,Chard,cool season vegetable,25,50,75,4,True,,55,2,Full Sun,True,False,False,False,False
-25,Cilantro,herb,28,50,75,4,True,,45,1,Partial Shade,True,True,False,False,False
-26,Parsley,herb,28,50,75,4,False,6.0,70,1,Partial Shade,True,True,False,False,False
-27,Dill,herb,28,50,80,4,True,,40,1,Full Sun,True,True,False,False,False
-28,Thyme,herb,20,55,80,2,False,6.0,75,1,Full Sun,True,True,False,False,False
-29,Oregano,herb,20,55,80,2,False,6.0,80,1,Full Sun,True,True,False,False,False
-30,Strawberry,fruit,20,60,80,2,False,8.0,60,1,Full Sun,True,True,False,False,False
-31,Cherry Tomato,warm season vegetable,50,65,85,-2,False,6.0,65,2,Full Sun,True,False,False,False,True
-32,Roma Tomato,warm season vegetable,50,65,85,-2,False,6.0,78,4,Full Sun,True,False,False,False,True
-33,Heirloom Tomato,warm season vegetable,50,65,85,-2,False,6.0,80,4,Full Sun,True,False,False,False,True
-34,Bell Pepper,warm season vegetable,55,70,90,-2,False,8.0,75,2,Full Sun,True,False,False,False,True
-35,Jalapeno,warm season vegetable,55,70,90,-2,False,8.0,75,2,Full Sun,True,False,False,False,True
-36,Serrano Pepper,warm season vegetable,55,70,90,-2,False,8.0,80,2,Full Sun,True,False,False,False,True
-37,Habanero,warm season vegetable,60,75,95,-2,False,10.0,90,2,Full Sun,True,False,False,False,True
-38,Anaheim Pepper,warm season vegetable,55,70,90,-2,False,8.0,75,2,Full Sun,True,False,False,False,True
-39,Poblano Pepper,warm season vegetable,55,70,90,-2,False,8.0,80,2,Full Sun,True,False,False,False,True
-40,Yellow Squash,warm season vegetable,50,65,85,1,True,,55,9,Full Sun,True,False,False,False,False
-41,Acorn Squash,warm season vegetable,50,65,85,1,True,,85,16,Full Sun,True,False,False,False,True
-42,Butternut Squash,warm season vegetable,50,65,85,1,True,,110,16,Full Sun,True,False,False,False,True
-43,Delicata Squash,warm season vegetable,50,65,85,1,True,,100,16,Full Sun,True,False,False,False,True
-44,Spaghetti Squash,warm season vegetable,50,65,85,1,True,,90,16,Full Sun,True,False,False,False,True
-45,Kabocha Squash,warm season vegetable,50,65,85,1,True,,95,16,Full Sun,True,False,False,False,True
-46,Patty Pan Squash,warm season vegetable,50,65,85,1,True,,50,9,Full Sun,True,False,False,False,False
-47,Eggplant,warm season vegetable,55,70,90,-2,False,8.0,80,4,Full Sun,True,False,False,False,False
-48,Okra,warm season vegetable,60,70,90,1,True,,55,2,Full Sun,True,True,False,False,False
-49,Edamame,warm season vegetable,50,60,85,1,True,,90,1,Full Sun,True,False,False,False,False
-50,Lima Bean,warm season vegetable,55,65,85,1,True,,75,1,Full Sun,True,False,False,False,False
-51,Pole Bean,warm season vegetable,50,60,80,1,True,,60,1,Full Sun,True,False,False,False,True
-52,Bush Bean,warm season vegetable,50,60,80,1,True,,55,1,Full Sun,True,False,False,False,False
-53,Snap Pea,cool season vegetable,28,45,70,6,True,,70,1,Full Sun,True,False,False,False,True
-54,Snow Pea,cool season vegetable,28,45,70,6,True,,65,1,Full Sun,True,False,False,False,True
-55,Shelling Pea,cool season vegetable,28,45,70,6,True,,70,1,Full Sun,True,False,False,False,True
-56,Fava Bean,cool season vegetable,25,45,70,8,True,,90,2,Full Sun,True,True,False,False,False
-57,Arugula,cool season vegetable,25,45,65,6,True,,40,1,Partial Shade,True,False,False,False,False
-58,Bok Choy,cool season vegetable,28,50,70,4,True,,45,2,Partial Shade,True,False,False,False,False
-59,Napa Cabbage,cool season vegetable,28,50,70,4,False,4.0,70,4,Partial Shade,True,False,False,False,False
-60,Brussels Sprouts,cool season vegetable,20,45,75,8,False,6.0,100,4,Full Sun,True,False,False,False,False
-61,Kohlrabi,cool season vegetable,25,50,75,4,True,,55,2,Full Sun,True,False,False,False,False
-62,Turnip,cool season vegetable,28,50,75,4,True,,50,1,Full Sun,True,False,False,False,False
-63,Rutabaga,cool season vegetable,25,50,75,6,True,,90,2,Full Sun,True,False,False,False,False
-64,Parsnip,cool season vegetable,25,50,75,6,True,,100,1,Full Sun,True,True,False,False,False
-65,Celeriac,cool season vegetable,25,55,75,8,False,10.0,120,2,Partial Shade,True,True,False,False,False
-66,Celery,cool season vegetable,28,55,75,6,False,10.0,120,2,Partial Shade,True,True,False,False,False
-67,Fennel,cool season vegetable,25,55,80,4,True,,90,2,Full Sun,True,True,False,False,False
-68,Leek,cool season vegetable,20,50,75,8,False,10.0,120,1,Full Sun,True,False,False,False,False
-69,Shallot,bulb,20,50,80,4,True,,90,1,Full Sun,True,False,False,False,False
-70,Green Onion,bulb,25,50,80,4,True,,60,1,Full Sun,True,False,False,False,False
-71,Chive,herb,20,50,80,4,True,,60,1,Full Sun,True,True,False,False,False
-72,Rosemary,herb,20,55,85,2,False,8.0,90,2,Full Sun,True,True,True,False,False
-73,Sage,herb,20,55,85,2,False,6.0,75,2,Full Sun,True,True,True,False,False
-74,Mint,herb,20,55,80,2,False,6.0,90,2,Partial Shade,True,True,False,False,False
-75,Lemon Balm,herb,20,55,80,2,False,6.0,70,2,Partial Shade,True,True,False,False,False
-76,Tarragon,herb,20,55,80,2,False,6.0,60,2,Full Sun,True,False,False,False,False
-77,Chervil,herb,28,50,70,4,True,,60,1,Partial Shade,True,True,False,False,False
-78,Lovage,herb,20,50,75,2,False,6.0,90,4,Full Sun,True,True,False,False,False
-79,Marjoram,herb,28,55,80,2,False,6.0,80,1,Full Sun,True,True,False,False,False
-80,Summer Savory,herb,28,55,80,2,True,,60,1,Full Sun,True,True,False,False,False
-81,Winter Savory,herb,20,50,75,2,False,6.0,60,1,Full Sun,True,True,False,False,False
-82,Stevia,herb,50,65,85,-1,False,6.0,60,2,Full Sun,True,False,False,False,False
-83,Lemongrass,herb,50,65,85,-1,False,6.0,90,4,Full Sun,False,False,False,False,False
-84,Chamomile,herb,20,50,75,4,True,,60,1,Full Sun,True,True,False,False,False
-85,Lavender,herb,15,55,85,2,False,8.0,90,4,Full Sun,True,True,True,False,False
-86,Borage,herb,28,55,80,2,True,,56,2,Full Sun,True,True,False,False,False
-87,Catnip,herb,20,50,80,2,False,6.0,70,2,Full Sun,True,True,False,False,False
-88,Valerian,herb,20,50,75,2,False,6.0,120,4,Partial Shade,True,True,False,False,False
-89,Echinacea,herb,20,55,80,2,False,8.0,120,2,Full Sun,True,True,False,False,False
-90,St. Johns Wort,herb,20,55,80,2,False,6.0,90,2,Full Sun,True,True,False,True,False
-91,Comfrey,herb,20,50,75,2,False,6.0,60,4,Partial Shade,True,False,False,True,False
-92,Feverfew,herb,20,50,75,4,True,,90,2,Full Sun,True,True,False,False,False
-93,Hyssop,herb,20,55,80,2,False,6.0,80,2,Full Sun,True,True,True,False,False
-94,Anise,herb,28,55,80,2,True,,75,1,Full Sun,True,True,False,False,False
-95,Caraway,herb,25,50,75,4,True,,90,1,Full Sun,True,True,False,False,False
-96,Coriander,herb,28,50,75,4,True,,45,1,Partial Shade,True,True,False,False,False
-97,Cumin,herb,55,65,85,1,True,,120,1,Full Sun,True,False,False,False,False
-98,Fenugreek,herb,28,55,80,2,True,,60,1,Full Sun,True,False,False,False,False
-99,Lemon Verbena,herb,50,65,85,-1,False,6.0,90,4,Full Sun,True,True,False,False,False
-100,Raspberry,fruit,10,55,80,2,False,8.0,365,4,Full Sun,True,True,False,False,True
-101,Blueberry,fruit,10,55,80,2,False,8.0,365,9,Full Sun,True,True,False,False,False
-102,Blackberry,fruit,10,55,80,2,False,8.0,365,9,Full Sun,True,True,False,False,True
-103,Gooseberry,fruit,10,50,75,2,False,8.0,365,4,Partial Shade,True,False,False,False,False
-104,Currant,fruit,10,50,75,2,False,8.0,365,4,Partial Shade,True,True,False,False,False
-105,Huckleberry,fruit,15,50,75,2,False,8.0,365,4,Partial Shade,True,True,False,False,False
-106,Marionberry,fruit,10,55,80,2,False,8.0,365,9,Full Sun,True,True,False,False,True
-107,Boysenberry,fruit,10,55,80,2,False,8.0,365,9,Full Sun,True,True,False,False,True
-108,Loganberry,fruit,10,55,80,2,False,8.0,365,9,Full Sun,True,True,False,False,True
-109,Grape,fruit,20,60,85,-2,False,8.0,365,4,Full Sun,True,True,False,False,True
-110,Rosehip,fruit,10,50,80,2,False,8.0,365,9,Full Sun,True,True,False,False,False
-111,Aronia,fruit,10,50,80,2,False,8.0,365,9,Full Sun,True,True,False,False,False
-112,Goji Berry,fruit,15,55,85,2,False,8.0,365,4,Full Sun,True,False,False,False,False
-113,Honeyberry,fruit,10,50,75,2,False,8.0,365,4,Full Sun,True,False,False,False,False
-114,Jostaberry,fruit,10,50,75,2,False,8.0,365,4,Full Sun,True,True,False,False,False
-115,Tayberry,fruit,10,55,80,2,False,8.0,365,9,Full Sun,True,True,False,False,True
-116,Salmonberry,fruit,15,50,75,2,False,8.0,365,9,Partial Shade,True,True,False,False,False
-117,Thimbleberry,fruit,15,50,75,2,False,8.0,365,9,Partial Shade,True,True,False,False,False
-118,Cranberry,fruit,10,50,75,2,False,8.0,365,4,Full Sun,True,False,False,False,False
-119,Lingonberry,fruit,10,45,70,2,False,8.0,365,2,Partial Shade,True,False,False,False,False
-120,Alpine Strawberry,fruit,20,55,75,2,False,8.0,60,1,Partial Shade,True,True,False,False,False
-121,Day Neutral Strawberry,fruit,20,60,80,2,False,8.0,60,1,Full Sun,True,True,False,False,False
-122,Everbearing Strawberry,fruit,20,60,80,2,False,8.0,60,1,Full Sun,True,True,False,False,False
-123,Watermelon,warm season vegetable,55,70,90,1,False,4.0,85,16,Full Sun,True,False,False,False,True
-124,Cantaloupe,warm season vegetable,55,70,90,1,False,4.0,80,16,Full Sun,True,False,False,False,True
-125,Honeydew,warm season vegetable,55,70,90,1,False,4.0,85,16,Full Sun,True,False,False,False,True
-126,Sunflower,flower,35,60,85,1,True,,80,1,Full Sun,True,True,False,False,False
-127,Zinnia,flower,40,65,90,-1,False,4.0,60,1,Full Sun,True,True,False,False,False
-128,Marigold,flower,35,60,85,1,True,,50,1,Full Sun,True,True,False,False,False
-129,Nasturtium,flower,30,55,80,1,True,,55,2,Full Sun,True,True,False,False,False
-130,Cosmos,flower,35,60,85,1,True,,60,1,Full Sun,True,True,False,False,False
-131,Bachelor Button,flower,25,55,80,4,True,,60,1,Full Sun,True,True,False,False,False
-132,Calendula,flower,25,50,75,4,True,,50,1,Full Sun,True,True,False,False,False
-133,Sweet Pea,flower,28,50,75,6,True,,70,1,Full Sun,True,True,False,True,True
-134,Larkspur,flower,28,50,75,6,True,,90,1,Full Sun,True,True,False,True,True
-135,Poppy,flower,25,50,75,6,True,,60,1,Full Sun,True,True,False,False,False
-136,Pansy,flower,20,45,65,6,False,8.0,60,1,Partial Shade,True,False,False,False,False
-137,Viola,flower,20,45,65,6,False,8.0,60,1,Partial Shade,True,True,False,False,False
-138,Snapdragon,flower,25,50,75,4,False,8.0,90,1,Full Sun,True,True,True,False,False
-139,Stock,flower,28,50,70,4,False,8.0,70,1,Full Sun,True,True,False,False,False
-140,Alyssum,flower,25,50,75,4,True,,60,1,Full Sun,True,True,False,False,False
-141,Lobelia,flower,28,55,75,-1,False,10.0,70,1,Partial Shade,True,True,False,True,False
-142,Impatiens,flower,40,60,80,-1,False,10.0,70,1,Partial Shade,False,True,False,False,False
-143,Begonia,flower,40,60,80,-1,False,10.0,70,2,Partial Shade,False,False,False,True,False
-144,Petunia,flower,35,60,80,-1,False,10.0,70,1,Full Sun,True,True,True,False,False
-145,Geranium,flower,35,60,80,-1,False,8.0,90,2,Full Sun,True,True,False,True,False
-146,Fuchsia,flower,35,55,75,-1,False,8.0,90,2,Partial Shade,True,False,True,False,False
-147,Dahlia,flower,40,60,85,-1,False,6.0,90,4,Full Sun,True,True,False,False,True
-148,Gladiolus,flower,40,60,85,1,True,,90,1,Full Sun,True,True,False,False,True
-149,Canna Lily,flower,50,65,90,-1,False,6.0,90,4,Full Sun,False,True,True,False,False
-150,Crocosmia,flower,20,55,80,2,True,,90,1,Full Sun,True,False,True,False,False
-151,Foxglove,flower,20,50,75,2,False,6.0,365,2,Partial Shade,True,False,True,True,False
-152,Hollyhock,flower,20,55,80,2,True,,365,2,Full Sun,True,True,True,False,True
-153,Delphinium,flower,20,50,75,4,False,8.0,90,2,Full Sun,True,True,False,True,True
-154,Lupine,flower,20,50,75,4,True,,90,2,Full Sun,True,True,False,False,False
-155,Columbine,flower,20,50,75,4,True,,90,2,Partial Shade,True,True,True,False,False
-156,Bleeding Heart,flower,20,45,70,4,False,8.0,90,4,Full Shade,False,False,True,True,False
-157,Astilbe,flower,20,50,75,4,False,8.0,90,4,Partial Shade,True,True,False,False,False
-158,Hosta,flower,20,50,75,4,False,8.0,90,4,Full Shade,True,False,False,False,False
-159,Fern,flower,20,45,70,4,False,8.0,365,4,Full Shade,False,False,False,False,False
-160,Hellebore,flower,15,45,65,4,False,8.0,365,4,Partial Shade,True,False,False,True,False
-161,Echinacea (Coneflower),flower,20,55,80,2,False,8.0,90,2,Full Sun,True,True,False,False,False
-162,Black Eyed Susan,flower,20,55,80,2,True,,90,2,Full Sun,True,True,False,False,False
-163,Shasta Daisy,flower,20,55,80,2,False,6.0,90,2,Full Sun,True,True,False,False,False
-164,Coreopsis,flower,20,55,80,2,True,,60,1,Full Sun,True,True,False,False,False
-165,Gaillardia,flower,20,60,85,1,True,,60,1,Full Sun,True,True,False,False,False
-166,Liatris,flower,20,55,80,2,False,6.0,90,2,Full Sun,True,True,True,False,True
-167,Rudbeckia,flower,20,55,80,2,True,,90,2,Full Sun,True,True,False,False,False
-168,Salvia,flower,25,60,85,1,False,8.0,90,2,Full Sun,True,True,True,False,False
-169,Agastache,flower,20,60,85,1,False,8.0,90,2,Full Sun,True,True,True,False,False
-170,Monarda,flower,20,55,80,2,False,6.0,90,4,Full Sun,True,True,True,False,False
-171,Catmint,flower,20,55,80,2,False,6.0,90,4,Full Sun,True,True,False,False,False
-172,Russian Sage,flower,20,60,85,2,False,6.0,90,4,Full Sun,True,True,False,False,False
-173,Veronicastrum,flower,20,55,80,2,False,8.0,90,4,Full Sun,True,True,False,False,False
-174,Penstemon,flower,15,55,80,2,False,8.0,90,2,Full Sun,True,True,True,False,False
-175,Campanula,flower,20,50,75,4,False,8.0,90,2,Partial Shade,True,True,False,False,False
-176,Scabiosa,flower,20,55,80,2,True,,90,2,Full Sun,True,True,False,False,False
-177,Verbena,flower,25,60,85,1,False,8.0,70,2,Full Sun,True,True,False,False,False
-178,Helenium,flower,20,55,80,2,False,6.0,90,4,Full Sun,True,True,False,False,False
-179,Heliopsis,flower,20,55,80,2,True,,90,4,Full Sun,True,True,False,False,False
-180,Achillea (Yarrow),flower,20,55,80,2,True,,90,2,Full Sun,True,True,False,False,False
-181,Allium,bulb,10,50,75,4,True,,90,1,Full Sun,True,True,False,False,False
-182,Tulip,bulb,10,45,65,4,True,,90,1,Full Sun,True,False,False,False,False
-183,Daffodil,bulb,10,45,65,4,True,,90,1,Full Sun,False,False,False,True,False
-184,Hyacinth,bulb,10,45,65,4,True,,90,1,Full Sun,True,False,False,True,False
-185,Crocus,bulb,10,40,60,4,True,,90,1,Full Sun,True,True,False,False,False
-186,Iris,bulb,10,50,75,4,True,,90,2,Full Sun,True,True,False,True,False
-187,Lily,bulb,10,55,80,2,True,,90,2,Full Sun,True,True,False,True,False
-188,Asiatic Lily,bulb,10,55,80,2,True,,90,2,Full Sun,True,True,False,True,False
-189,Oriental Lily,bulb,10,55,80,2,True,,90,2,Full Sun,True,True,False,True,False
-190,Fritillaria,bulb,10,45,65,4,True,,90,1,Partial Shade,True,False,False,True,False
-191,Muscari,bulb,10,40,65,4,True,,90,1,Full Sun,True,True,False,False,False
-192,Camassia,bulb,10,45,70,4,True,,90,1,Full Sun,True,True,False,False,False
-193,Anemone,bulb,20,50,70,4,True,,90,1,Partial Shade,True,True,False,True,False
-194,Ranunculus,bulb,28,50,70,4,True,,90,1,Full Sun,True,True,False,False,False
-195,Freesia,bulb,28,55,75,2,True,,90,1,Full Sun,True,True,False,False,False
-196,Ixia,bulb,28,55,75,2,True,,90,1,Full Sun,True,False,False,False,False
-197,Watsonia,bulb,25,55,75,2,True,,90,2,Full Sun,True,False,False,False,True
-198,Agapanthus,bulb,25,60,80,-1,False,8.0,90,4,Full Sun,True,True,False,False,False
-199,Crocosmia Lucifer,bulb,15,55,80,2,True,,90,2,Full Sun,True,False,True,False,False
-200,Scilla,bulb,10,40,65,4,True,,90,1,Partial Shade,True,True,False,False,False
-201,Sweet Corn,warm season vegetable,50,60,85,1,True,,80,1,Full Sun,False,False,False,False,False
-202,Popcorn,warm season vegetable,50,60,85,1,True,,100,1,Full Sun,False,False,False,False,False
-203,Ornamental Corn,warm season vegetable,50,60,85,1,True,,110,1,Full Sun,False,False,False,False,False
-204,Asparagus,perennial vegetable,20,55,80,2,False,8.0,730,2,Full Sun,True,False,False,False,False
-205,Artichoke,perennial vegetable,28,60,80,-1,False,8.0,365,9,Full Sun,True,True,False,False,False
-206,Jerusalem Artichoke,perennial vegetable,20,55,80,2,True,,120,4,Full Sun,True,True,False,False,False
-207,Rhubarb,perennial vegetable,20,50,75,2,False,8.0,365,4,Full Sun,False,False,False,True,False
-208,Sorrel,perennial vegetable,20,50,75,4,True,,60,2,Partial Shade,True,False,False,False,False
-209,Radicchio,cool season vegetable,25,50,70,4,True,,80,2,Partial Shade,True,False,False,False,False
-210,Endive,cool season vegetable,25,50,70,4,True,,90,1,Partial Shade,True,False,False,False,False
-211,Escarole,cool season vegetable,25,50,70,4,True,,85,2,Partial Shade,True,False,False,False,False
-212,Frisee,cool season vegetable,25,50,70,4,True,,90,1,Partial Shade,True,False,False,False,False
-213,Mache,cool season vegetable,25,40,65,6,True,,60,1,Partial Shade,True,False,False,False,False
-214,Claytonia,cool season vegetable,20,40,65,6,True,,40,1,Partial Shade,True,False,False,False,False
-215,Mizuna,cool season vegetable,25,45,70,6,True,,40,1,Partial Shade,True,False,False,False,False
-216,Tatsoi,cool season vegetable,25,45,70,6,True,,45,1,Partial Shade,True,False,False,False,False
-217,Mustard Greens,cool season vegetable,25,45,70,6,True,,40,1,Full Sun,True,False,False,False,False
-218,Collard Greens,cool season vegetable,20,45,75,6,True,,60,2,Full Sun,True,False,False,False,False
-219,Watercress,cool season vegetable,28,50,70,4,True,,50,1,Partial Shade,True,False,False,False,False
-220,Purslane,cool season vegetable,35,60,80,1,True,,50,1,Full Sun,True,False,False,False,False
-221,Amaranth,warm season vegetable,40,65,85,1,True,,60,2,Full Sun,True,True,False,False,False
-222,Quinoa,cool season vegetable,28,50,75,4,True,,90,2,Full Sun,True,False,False,False,False
-223,Millet,warm season vegetable,50,65,85,1,True,,75,1,Full Sun,True,False,False,False,False
-224,Sunflower (seeds),warm season vegetable,35,60,85,1,True,,80,1,Full Sun,True,True,False,False,False
-225,Borage (culinary),herb,28,55,80,2,True,,56,2,Full Sun,True,True,False,False,False
-226,Nasturtium (culinary),herb,30,55,80,1,True,,55,2,Full Sun,True,True,False,False,False
-227,Shiso,herb,50,65,85,-1,True,,60,1,Full Sun,True,False,False,False,False
-228,Vietnamese Coriander,herb,50,65,85,-1,False,6.0,60,1,Partial Shade,True,False,False,False,False
-229,Thai Basil,herb,50,65,85,-1,False,4.0,30,1,Full Sun,True,True,False,False,False
-230,Lemon Basil,herb,50,65,85,-1,False,4.0,30,1,Full Sun,True,True,False,False,False
-231,Purple Basil,herb,50,65,85,-1,False,4.0,30,1,Full Sun,True,True,False,False,False
-232,Tulsi,herb,50,65,85,-1,False,6.0,60,1,Full Sun,True,True,False,False,False
-233,Epazote,herb,35,60,85,1,True,,60,1,Full Sun,True,False,False,False,False
-234,Mexican Oregano,herb,40,65,85,1,False,6.0,75,1,Full Sun,True,True,False,False,False
-235,Greek Oregano,herb,20,55,80,2,False,6.0,80,1,Full Sun,True,True,False,False,False
-236,Cuban Oregano,herb,50,65,85,-1,False,6.0,75,2,Full Sun,True,True,False,False,False
-237,Spearmint,herb,20,55,80,2,False,6.0,90,2,Partial Shade,True,True,False,False,False
-238,Peppermint,herb,20,55,80,2,False,6.0,90,2,Partial Shade,True,True,False,False,False
-239,Chocolate Mint,herb,20,55,80,2,False,6.0,90,2,Partial Shade,True,True,False,False,False
-240,Apple Mint,herb,20,55,80,2,False,6.0,90,2,Partial Shade,True,True,False,False,False
-241,Watermint,herb,20,50,75,2,False,6.0,90,2,Partial Shade,True,True,False,False,False
-242,Pennyroyal,herb,20,50,75,2,False,6.0,90,2,Partial Shade,True,False,False,True,False
-243,French Tarragon,herb,20,55,80,2,False,6.0,60,2,Full Sun,True,False,False,False,False
-244,Russian Tarragon,herb,20,55,80,2,True,,60,2,Full Sun,True,False,False,False,False
-245,Flat Leaf Parsley,herb,28,50,75,4,False,6.0,70,1,Partial Shade,True,True,False,False,False
-246,Curly Parsley,herb,28,50,75,4,False,6.0,70,1,Partial Shade,True,True,False,False,False
-247,Hamburg Parsley,herb,28,50,75,4,False,6.0,90,1,Partial Shade,True,True,False,False,False
-248,Cutting Celery,herb,28,55,75,6,False,10.0,90,2,Partial Shade,True,True,False,False,False
-249,Garlic Chive,herb,20,50,80,4,True,,60,1,Full Sun,True,True,False,False,False
-250,Society Garlic,herb,25,55,80,2,False,6.0,90,2,Full Sun,True,True,False,False,False
-251,Watermelon Radish,cool season vegetable,28,45,65,6,True,,60,1,Full Sun,True,False,False,False,False
-252,Daikon Radish,cool season vegetable,28,45,65,6,True,,60,1,Full Sun,True,False,False,False,False
-253,Black Radish,cool season vegetable,28,45,65,6,True,,55,1,Full Sun,True,False,False,False,False
-254,French Breakfast Radish,cool season vegetable,28,45,65,6,True,,25,1,Full Sun,True,False,False,False,False
-255,Chioggia Beet,cool season vegetable,28,50,75,4,True,,55,1,Full Sun,True,False,False,False,False
-256,Golden Beet,cool season vegetable,28,50,75,4,True,,55,1,Full Sun,True,False,False,False,False
-257,Cylindra Beet,cool season vegetable,28,50,75,4,True,,60,1,Full Sun,True,False,False,False,False
-258,Nantes Carrot,cool season vegetable,28,50,75,4,True,,70,1,Full Sun,True,True,False,False,False
-259,Chantenay Carrot,cool season vegetable,28,50,75,4,True,,70,1,Full Sun,True,True,False,False,False
-260,Danvers Carrot,cool season vegetable,28,50,75,4,True,,75,1,Full Sun,True,True,False,False,False
-261,Imperator Carrot,cool season vegetable,28,50,75,4,True,,80,1,Full Sun,True,True,False,False,False
-262,Cosmic Purple Carrot,cool season vegetable,28,50,75,4,True,,70,1,Full Sun,True,True,False,False,False
-263,Dragon Carrot,cool season vegetable,28,50,75,4,True,,75,1,Full Sun,True,True,False,False,False
-264,Rainbow Chard,cool season vegetable,25,50,75,4,True,,55,2,Full Sun,True,False,False,False,False
-265,Red Russian Kale,cool season vegetable,20,45,75,6,True,,55,2,Full Sun,True,False,False,False,False
-266,Lacinato Kale,cool season vegetable,20,45,75,6,True,,60,2,Full Sun,True,False,False,False,False
-267,Curly Kale,cool season vegetable,20,45,75,6,True,,60,2,Full Sun,True,False,False,False,False
-268,Siberian Kale,cool season vegetable,15,45,75,6,True,,55,2,Full Sun,True,False,False,False,False
-269,Butterhead Lettuce,cool season vegetable,28,45,65,4,True,,55,1,Partial Shade,False,False,False,False,False
-270,Romaine Lettuce,cool season vegetable,28,45,65,4,True,,70,1,Partial Shade,False,False,False,False,False
-271,Looseleaf Lettuce,cool season vegetable,28,45,65,4,True,,45,1,Partial Shade,False,False,False,False,False
-272,Iceberg Lettuce,cool season vegetable,28,45,65,4,False,4.0,80,1,Partial Shade,False,False,False,False,False
-273,Oakleaf Lettuce,cool season vegetable,28,45,65,4,True,,50,1,Partial Shade,False,False,False,False,False
-274,Malabar Spinach,warm season vegetable,50,65,85,-1,False,6.0,60,2,Full Sun,True,False,False,False,False
-275,New Zealand Spinach,warm season vegetable,45,60,85,1,True,,70,4,Full Sun,True,False,False,False,False
-276,Orach,cool season vegetable,25,50,75,4,True,,50,2,Full Sun,True,False,False,False,False
-277,Good King Henry,perennial vegetable,20,50,75,2,False,6.0,365,2,Partial Shade,True,False,False,False,False
-278,Ground Cherry,warm season vegetable,45,60,85,1,False,6.0,70,4,Full Sun,True,False,False,False,True
-279,Tomatillo,warm season vegetable,50,65,85,-1,False,6.0,75,4,Full Sun,True,False,False,False,True
-280,Luffa,warm season vegetable,60,70,90,1,True,,120,9,Full Sun,True,False,False,False,True
-281,Bitter Melon,warm season vegetable,60,70,90,1,True,,90,9,Full Sun,True,False,False,False,True
-282,Dragon Tongue Bean,warm season vegetable,50,60,80,1,True,,55,1,Full Sun,True,False,False,False,False
-283,Scarlet Runner Bean,warm season vegetable,45,60,80,1,True,,70,2,Full Sun,True,True,True,False,True
-284,Yardlong Bean,warm season vegetable,55,65,85,1,True,,80,1,Full Sun,True,False,False,False,True
+plant_id,common_name,growing_season,harvest_type,plant_family,min_viable_temp_f,ideal_temp_min_f,ideal_temp_max_f,max_viable_temp_f,weeks_before_frost,direct_sow,weeks_indoor_before_transplant,days_to_maturity,square_feet_needed,sun_requirements,attracts_bees,attracts_butterflies,attracts_hummingbirds,toxic,needs_support
+1,Tomato,Warm Season,Vegetable/Fruit,Solanaceae,50,65,85,95,-2,False,6.0,75,4,Full Sun,True,False,False,False,True
+2,Pepper,Warm Season,Vegetable/Fruit,Solanaceae,55,70,90,100,-2,False,8.0,80,2,Full Sun,True,False,False,False,True
+3,Zucchini,Warm Season,Vegetable/Fruit,Cucurbitaceae,50,65,85,95,1,True,0.0,55,9,Full Sun,True,False,False,False,False
+4,Cucumber,Warm Season,Vegetable/Fruit,Cucurbitaceae,50,65,85,95,1,True,0.0,60,9,Full Sun,True,False,False,False,True
+5,Green Bean,Warm Season,Vegetable/Fruit,Fabaceae,50,60,80,90,1,True,0.0,55,1,Full Sun,True,False,False,False,False
+6,Corn,Warm Season,Vegetable/Fruit,Poaceae,50,60,85,95,1,True,0.0,80,1,Full Sun,False,False,False,False,False
+7,Basil,Warm Season,Herb,Lamiaceae,50,65,85,95,-1,False,4.0,30,1,Full Sun,True,True,False,False,False
+8,Kale,Cool Season,Vegetable/Fruit,Brassicaceae,20,45,75,85,6,True,0.0,60,2,Full Sun,True,False,False,False,False
+9,Spinach,Cool Season,Vegetable/Fruit,Amaranthaceae,25,45,65,75,6,True,0.0,45,1,Partial Shade,True,False,False,False,False
+10,Lettuce,Cool Season,Vegetable/Fruit,Asteraceae,28,45,65,75,4,True,0.0,50,1,Partial Shade,False,False,False,False,False
+11,Carrot,Cool Season,Vegetable/Fruit,Apiaceae,28,50,75,85,4,True,0.0,70,1,Full Sun,True,True,False,False,False
+12,Radish,Cool Season,Vegetable/Fruit,Brassicaceae,28,45,65,75,6,True,0.0,30,1,Full Sun,True,False,False,False,False
+13,Beet,Cool Season,Vegetable/Fruit,Amaranthaceae,28,50,75,85,4,True,0.0,60,1,Full Sun,True,False,False,False,False
+14,Broccoli,Cool Season,Vegetable/Fruit,Brassicaceae,25,45,75,85,6,False,6.0,80,4,Full Sun,True,False,False,False,False
+15,Cauliflower,Cool Season,Vegetable/Fruit,Brassicaceae,25,45,75,85,6,False,6.0,85,4,Full Sun,True,False,False,False,False
+16,Cabbage,Cool Season,Vegetable/Fruit,Brassicaceae,25,45,75,85,6,False,6.0,80,4,Full Sun,True,False,False,False,False
+17,Pea,Cool Season,Vegetable/Fruit,Fabaceae,28,45,70,80,6,True,0.0,60,1,Full Sun,True,False,False,False,False
+18,Garlic,Cool Season,Vegetable/Fruit,Alliaceae,10,40,80,90,8,True,0.0,240,1,Full Sun,True,False,False,False,False
+19,Onion,Cool Season,Vegetable/Fruit,Alliaceae,20,50,80,90,4,False,8.0,100,1,Full Sun,True,False,False,False,False
+20,Potato,Cool Season,Vegetable/Fruit,Solanaceae,35,60,80,90,2,True,0.0,90,4,Full Sun,True,False,False,False,False
+21,Sweet Potato,Warm Season,Vegetable/Fruit,Convolvulaceae,55,70,90,100,-2,False,6.0,100,4,Full Sun,True,True,False,False,False
+22,Winter Squash,Warm Season,Vegetable/Fruit,Cucurbitaceae,50,65,85,95,1,True,0.0,90,16,Full Sun,True,False,False,False,True
+23,Pumpkin,Warm Season,Vegetable/Fruit,Cucurbitaceae,50,65,85,95,1,True,0.0,100,16,Full Sun,True,False,False,False,False
+24,Chard,Cool Season,Vegetable/Fruit,Amaranthaceae,25,50,75,85,4,True,0.0,55,2,Full Sun,True,False,False,False,False
+25,Cilantro,Cool Season,Herb,Apiaceae,28,50,75,85,4,True,0.0,45,1,Partial Shade,True,True,False,False,False
+26,Parsley,Cool Season,Herb,Apiaceae,28,50,75,85,4,False,6.0,70,1,Partial Shade,True,True,False,False,False
+27,Dill,Cool Season,Herb,Apiaceae,28,50,80,90,4,True,0.0,40,1,Full Sun,True,True,False,False,False
+28,Thyme,Cool Season,Herb,Lamiaceae,20,55,80,100,2,False,6.0,75,1,Full Sun,True,True,False,False,False
+29,Oregano,Cool Season,Herb,Lamiaceae,20,55,80,100,2,False,6.0,80,1,Full Sun,True,True,False,False,False
+30,Strawberry,Cool Season,Vegetable/Fruit,Rosaceae,20,60,80,90,2,False,8.0,60,1,Full Sun,True,True,False,False,False
+31,Cherry Tomato,Warm Season,Vegetable/Fruit,Solanaceae,50,65,85,95,-2,False,6.0,65,2,Full Sun,True,False,False,False,True
+32,Roma Tomato,Warm Season,Vegetable/Fruit,Solanaceae,50,65,85,95,-2,False,6.0,78,4,Full Sun,True,False,False,False,True
+33,Heirloom Tomato,Warm Season,Vegetable/Fruit,Solanaceae,50,65,85,95,-2,False,6.0,80,4,Full Sun,True,False,False,False,True
+34,Bell Pepper,Warm Season,Vegetable/Fruit,Solanaceae,55,70,90,100,-2,False,8.0,75,2,Full Sun,True,False,False,False,True
+35,Jalapeno,Warm Season,Vegetable/Fruit,Solanaceae,55,70,90,105,-2,False,8.0,75,2,Full Sun,True,False,False,False,True
+36,Serrano Pepper,Warm Season,Vegetable/Fruit,Solanaceae,55,70,90,105,-2,False,8.0,80,2,Full Sun,True,False,False,False,True
+37,Habanero,Warm Season,Vegetable/Fruit,Solanaceae,60,75,95,110,-2,False,10.0,90,2,Full Sun,True,False,False,False,True
+38,Anaheim Pepper,Warm Season,Vegetable/Fruit,Solanaceae,55,70,90,100,-2,False,8.0,75,2,Full Sun,True,False,False,False,True
+39,Poblano Pepper,Warm Season,Vegetable/Fruit,Solanaceae,55,70,90,100,-2,False,8.0,80,2,Full Sun,True,False,False,False,True
+40,Yellow Squash,Warm Season,Vegetable/Fruit,Cucurbitaceae,50,65,85,95,1,True,0.0,55,9,Full Sun,True,False,False,False,False
+41,Acorn Squash,Warm Season,Vegetable/Fruit,Cucurbitaceae,50,65,85,95,1,True,0.0,85,16,Full Sun,True,False,False,False,True
+42,Butternut Squash,Warm Season,Vegetable/Fruit,Cucurbitaceae,50,65,85,95,1,True,0.0,110,16,Full Sun,True,False,False,False,True
+43,Delicata Squash,Warm Season,Vegetable/Fruit,Cucurbitaceae,50,65,85,95,1,True,0.0,100,16,Full Sun,True,False,False,False,True
+44,Spaghetti Squash,Warm Season,Vegetable/Fruit,Cucurbitaceae,50,65,85,95,1,True,0.0,90,16,Full Sun,True,False,False,False,True
+45,Kabocha Squash,Warm Season,Vegetable/Fruit,Cucurbitaceae,50,65,85,95,1,True,0.0,95,16,Full Sun,True,False,False,False,True
+46,Patty Pan Squash,Warm Season,Vegetable/Fruit,Cucurbitaceae,50,65,85,95,1,True,0.0,50,9,Full Sun,True,False,False,False,False
+47,Eggplant,Warm Season,Vegetable/Fruit,Solanaceae,55,70,90,100,-2,False,8.0,80,4,Full Sun,True,False,False,False,False
+48,Okra,Warm Season,Vegetable/Fruit,Malvaceae,60,70,90,105,1,True,0.0,55,2,Full Sun,True,True,False,False,False
+49,Edamame,Warm Season,Vegetable/Fruit,Fabaceae,50,60,85,95,1,True,0.0,90,1,Full Sun,True,False,False,False,False
+50,Lima Bean,Warm Season,Vegetable/Fruit,Fabaceae,55,65,85,95,1,True,0.0,75,1,Full Sun,True,False,False,False,False
+51,Pole Bean,Warm Season,Vegetable/Fruit,Fabaceae,50,60,80,90,1,True,0.0,60,1,Full Sun,True,False,False,False,True
+52,Bush Bean,Warm Season,Vegetable/Fruit,Fabaceae,50,60,80,90,1,True,0.0,55,1,Full Sun,True,False,False,False,False
+53,Snap Pea,Cool Season,Vegetable/Fruit,Fabaceae,28,45,70,80,6,True,0.0,70,1,Full Sun,True,False,False,False,True
+54,Snow Pea,Cool Season,Vegetable/Fruit,Fabaceae,28,45,70,80,6,True,0.0,65,1,Full Sun,True,False,False,False,True
+55,Shelling Pea,Cool Season,Vegetable/Fruit,Fabaceae,28,45,70,80,6,True,0.0,70,1,Full Sun,True,False,False,False,True
+56,Fava Bean,Cool Season,Vegetable/Fruit,Fabaceae,25,45,70,80,8,True,0.0,90,2,Full Sun,True,True,False,False,False
+57,Arugula,Cool Season,Vegetable/Fruit,Brassicaceae,25,45,65,85,6,True,0.0,40,1,Partial Shade,True,False,False,False,False
+58,Bok Choy,Cool Season,Vegetable/Fruit,Brassicaceae,28,50,70,80,4,True,0.0,45,2,Partial Shade,True,False,False,False,False
+59,Napa Cabbage,Cool Season,Vegetable/Fruit,Brassicaceae,28,50,70,80,4,False,4.0,70,4,Partial Shade,True,False,False,False,False
+60,Brussels Sprouts,Cool Season,Vegetable/Fruit,Brassicaceae,20,45,75,85,8,False,6.0,100,4,Full Sun,True,False,False,False,False
+61,Kohlrabi,Cool Season,Vegetable/Fruit,Brassicaceae,25,50,75,85,4,True,0.0,55,2,Full Sun,True,False,False,False,False
+62,Turnip,Cool Season,Vegetable/Fruit,Brassicaceae,28,50,75,85,4,True,0.0,50,1,Full Sun,True,False,False,False,False
+63,Rutabaga,Cool Season,Vegetable/Fruit,Brassicaceae,25,50,75,85,6,True,0.0,90,2,Full Sun,True,False,False,False,False
+64,Parsnip,Cool Season,Vegetable/Fruit,Apiaceae,25,50,75,85,6,True,0.0,100,1,Full Sun,True,True,False,False,False
+65,Celeriac,Cool Season,Vegetable/Fruit,Apiaceae,25,55,75,85,8,False,10.0,120,2,Partial Shade,True,True,False,False,False
+66,Celery,Cool Season,Vegetable/Fruit,Apiaceae,28,55,75,85,6,False,10.0,120,2,Partial Shade,True,True,False,False,False
+67,Fennel,Cool Season,Herb,Apiaceae,25,55,80,90,4,True,0.0,90,2,Full Sun,True,True,False,False,False
+68,Leek,Cool Season,Vegetable/Fruit,Alliaceae,20,50,75,85,8,False,10.0,120,1,Full Sun,True,False,False,False,False
+69,Shallot,Cool Season,Vegetable/Fruit,Alliaceae,20,50,80,90,4,True,0.0,90,1,Full Sun,True,False,False,False,False
+70,Green Onion,Cool Season,Vegetable/Fruit,Alliaceae,25,50,80,90,4,True,0.0,60,1,Full Sun,True,False,False,False,False
+71,Chive,Cool Season,Herb,Alliaceae,20,50,80,90,4,True,0.0,60,1,Full Sun,True,True,False,False,False
+72,Rosemary,Cool Season,Herb,Lamiaceae,20,55,85,100,2,False,8.0,90,2,Full Sun,True,True,True,False,False
+73,Sage,Cool Season,Herb,Lamiaceae,20,55,85,95,2,False,6.0,75,2,Full Sun,True,True,True,False,False
+74,Mint,Cool Season,Herb,Lamiaceae,20,55,80,90,2,False,6.0,90,2,Partial Shade,True,True,False,False,False
+75,Lemon Balm,Cool Season,Herb,Lamiaceae,20,55,80,90,2,False,6.0,70,2,Partial Shade,True,True,False,False,False
+76,Tarragon,Cool Season,Herb,Asteraceae,20,55,80,90,2,False,6.0,60,2,Full Sun,True,False,False,False,False
+77,Chervil,Cool Season,Herb,Apiaceae,28,50,70,80,4,True,0.0,60,1,Partial Shade,True,True,False,False,False
+78,Lovage,Cool Season,Herb,Apiaceae,20,50,75,85,2,False,6.0,90,4,Full Sun,True,True,False,False,False
+79,Marjoram,Cool Season,Herb,Lamiaceae,28,55,80,90,2,False,6.0,80,1,Full Sun,True,True,False,False,False
+80,Summer Savory,Cool Season,Herb,Lamiaceae,28,55,80,90,2,True,0.0,60,1,Full Sun,True,True,False,False,False
+81,Winter Savory,Cool Season,Herb,Lamiaceae,20,50,75,90,2,False,6.0,60,1,Full Sun,True,True,False,False,False
+82,Stevia,Warm Season,Herb,Asteraceae,50,65,85,95,-1,False,6.0,60,2,Full Sun,True,False,False,False,False
+83,Lemongrass,Warm Season,Herb,Poaceae,50,65,85,100,-1,False,6.0,90,4,Full Sun,False,False,False,False,False
+84,Chamomile,Cool Season,Herb,Asteraceae,20,50,75,85,4,True,0.0,60,1,Full Sun,True,True,False,False,False
+85,Lavender,Cool Season,Herb,Lamiaceae,15,55,85,100,2,False,8.0,90,4,Full Sun,True,True,True,False,False
+86,Borage,Cool Season,Herb,Boraginaceae,28,55,80,90,2,True,0.0,56,2,Full Sun,True,True,False,False,False
+87,Catnip,Cool Season,Herb,Lamiaceae,20,50,80,90,2,False,6.0,70,2,Full Sun,True,True,False,False,False
+88,Valerian,Cool Season,Herb,Valerianaceae,20,50,75,85,2,False,6.0,120,4,Partial Shade,True,True,False,False,False
+89,Echinacea,Cool Season,Herb,Asteraceae,20,55,80,90,2,False,8.0,120,2,Full Sun,True,True,False,False,False
+90,St. Johns Wort,Cool Season,Herb,Hypericaceae,20,55,80,90,2,False,6.0,90,2,Full Sun,True,True,False,True,False
+91,Comfrey,Cool Season,Herb,Boraginaceae,20,50,75,85,2,False,6.0,60,4,Partial Shade,True,False,False,True,False
+92,Feverfew,Cool Season,Herb,Asteraceae,20,50,75,85,4,True,0.0,90,2,Full Sun,True,True,False,False,False
+93,Hyssop,Cool Season,Herb,Lamiaceae,20,55,80,90,2,False,6.0,80,2,Full Sun,True,True,True,False,False
+94,Anise,Cool Season,Herb,Apiaceae,28,55,80,90,2,True,0.0,75,1,Full Sun,True,True,False,False,False
+95,Caraway,Cool Season,Herb,Apiaceae,25,50,75,85,4,True,0.0,90,1,Full Sun,True,True,False,False,False
+96,Coriander,Cool Season,Herb,Apiaceae,28,50,75,85,4,True,0.0,45,1,Partial Shade,True,True,False,False,False
+97,Cumin,Warm Season,Herb,Apiaceae,55,65,85,100,1,True,0.0,120,1,Full Sun,True,False,False,False,False
+98,Fenugreek,Cool Season,Herb,Fabaceae,28,55,80,90,2,True,0.0,60,1,Full Sun,True,False,False,False,False
+99,Lemon Verbena,Warm Season,Herb,Verbenaceae,50,65,85,95,-1,False,6.0,90,4,Full Sun,True,True,False,False,False
+100,Raspberry,Cool Season,Vegetable/Fruit,Rosaceae,10,55,80,90,2,False,8.0,365,4,Full Sun,True,True,False,False,True
+101,Blueberry,Cool Season,Vegetable/Fruit,Ericaceae,10,55,80,90,2,False,8.0,365,9,Full Sun,True,True,False,False,False
+102,Blackberry,Cool Season,Vegetable/Fruit,Rosaceae,10,55,80,90,2,False,8.0,365,9,Full Sun,True,True,False,False,True
+103,Gooseberry,Cool Season,Vegetable/Fruit,Grossulariaceae,10,50,75,85,2,False,8.0,365,4,Partial Shade,True,False,False,False,False
+104,Currant,Cool Season,Vegetable/Fruit,Grossulariaceae,10,50,75,85,2,False,8.0,365,4,Partial Shade,True,True,False,False,False
+105,Huckleberry,Cool Season,Vegetable/Fruit,Ericaceae,15,50,75,85,2,False,8.0,365,4,Partial Shade,True,True,False,False,False
+106,Marionberry,Cool Season,Vegetable/Fruit,Rosaceae,10,55,80,90,2,False,8.0,365,9,Full Sun,True,True,False,False,True
+107,Boysenberry,Cool Season,Vegetable/Fruit,Rosaceae,10,55,80,90,2,False,8.0,365,9,Full Sun,True,True,False,False,True
+108,Loganberry,Cool Season,Vegetable/Fruit,Rosaceae,10,55,80,90,2,False,8.0,365,9,Full Sun,True,True,False,False,True
+109,Grape,Warm Season,Vegetable/Fruit,Vitaceae,20,60,85,95,-2,False,8.0,365,4,Full Sun,True,True,False,False,True
+110,Rosehip,Cool Season,Vegetable/Fruit,Rosaceae,10,50,80,90,2,False,8.0,365,9,Full Sun,True,True,False,False,False
+111,Aronia,Cool Season,Vegetable/Fruit,Rosaceae,10,50,80,90,2,False,8.0,365,9,Full Sun,True,True,False,False,False
+112,Goji Berry,Cool Season,Vegetable/Fruit,Solanaceae,15,55,85,100,2,False,8.0,365,4,Full Sun,True,False,False,False,False
+113,Honeyberry,Cool Season,Vegetable/Fruit,Ericaceae,10,50,75,85,2,False,8.0,365,4,Full Sun,True,False,False,False,False
+114,Jostaberry,Cool Season,Vegetable/Fruit,Grossulariaceae,10,50,75,85,2,False,8.0,365,4,Full Sun,True,True,False,False,False
+115,Tayberry,Cool Season,Vegetable/Fruit,Rosaceae,10,55,80,90,2,False,8.0,365,9,Full Sun,True,True,False,False,True
+116,Salmonberry,Cool Season,Vegetable/Fruit,Rosaceae,15,50,75,85,2,False,8.0,365,9,Partial Shade,True,True,False,False,False
+117,Thimbleberry,Cool Season,Vegetable/Fruit,Rosaceae,15,50,75,85,2,False,8.0,365,9,Partial Shade,True,True,False,False,False
+118,Cranberry,Cool Season,Vegetable/Fruit,Ericaceae,10,50,75,85,2,False,8.0,365,4,Full Sun,True,False,False,False,False
+119,Lingonberry,Cool Season,Vegetable/Fruit,Ericaceae,10,45,70,80,2,False,8.0,365,2,Partial Shade,True,False,False,False,False
+120,Alpine Strawberry,Cool Season,Vegetable/Fruit,Rosaceae,20,55,75,85,2,False,8.0,60,1,Partial Shade,True,True,False,False,False
+121,Day Neutral Strawberry,Cool Season,Vegetable/Fruit,Rosaceae,20,60,80,90,2,False,8.0,60,1,Full Sun,True,True,False,False,False
+122,Everbearing Strawberry,Cool Season,Vegetable/Fruit,Rosaceae,20,60,80,90,2,False,8.0,60,1,Full Sun,True,True,False,False,False
+123,Watermelon,Warm Season,Vegetable/Fruit,Cucurbitaceae,55,70,90,100,1,False,4.0,85,16,Full Sun,True,False,False,False,True
+124,Cantaloupe,Warm Season,Vegetable/Fruit,Cucurbitaceae,55,70,90,100,1,False,4.0,80,16,Full Sun,True,False,False,False,True
+125,Honeydew,Warm Season,Vegetable/Fruit,Cucurbitaceae,55,70,90,100,1,False,4.0,85,16,Full Sun,True,False,False,False,True
+126,Sunflower,Warm Season,Ornamental,Asteraceae,35,60,85,95,1,True,0.0,80,1,Full Sun,True,True,False,False,False
+127,Zinnia,Warm Season,Ornamental,Asteraceae,40,65,90,100,-1,False,4.0,60,1,Full Sun,True,True,False,False,False
+128,Marigold,Warm Season,Ornamental,Asteraceae,35,60,85,95,1,True,0.0,50,1,Full Sun,True,True,False,False,False
+129,Nasturtium,Warm Season,Ornamental,Tropaeolaceae,30,55,80,90,1,True,0.0,55,2,Full Sun,True,True,False,False,False
+130,Cosmos,Warm Season,Ornamental,Asteraceae,35,60,85,95,1,True,0.0,60,1,Full Sun,True,True,False,False,False
+131,Bachelor Button,Cool Season,Ornamental,Asteraceae,25,55,80,90,4,True,0.0,60,1,Full Sun,True,True,False,False,False
+132,Calendula,Cool Season,Ornamental,Asteraceae,25,50,75,85,4,True,0.0,50,1,Full Sun,True,True,False,False,False
+133,Sweet Pea,Cool Season,Ornamental,Fabaceae,28,50,75,85,6,True,0.0,70,1,Full Sun,True,True,False,True,True
+134,Larkspur,Cool Season,Ornamental,Ranunculaceae,28,50,75,85,6,True,0.0,90,1,Full Sun,True,True,False,True,True
+135,Poppy,Cool Season,Ornamental,Papaveraceae,25,50,75,85,6,True,0.0,60,1,Full Sun,True,True,False,False,False
+136,Pansy,Cool Season,Ornamental,Violaceae,20,45,65,75,6,False,8.0,60,1,Partial Shade,True,False,False,False,False
+137,Viola,Cool Season,Ornamental,Violaceae,20,45,65,75,6,False,8.0,60,1,Partial Shade,True,True,False,False,False
+138,Snapdragon,Cool Season,Ornamental,Plantaginaceae,25,50,75,85,4,False,8.0,90,1,Full Sun,True,True,True,False,False
+139,Stock,Cool Season,Ornamental,Brassicaceae,28,50,70,80,4,False,8.0,70,1,Full Sun,True,True,False,False,False
+140,Alyssum,Cool Season,Ornamental,Brassicaceae,25,50,75,85,4,True,0.0,60,1,Full Sun,True,True,False,False,False
+141,Lobelia,Warm Season,Ornamental,Campanulaceae,28,55,75,85,-1,False,10.0,70,1,Partial Shade,True,True,False,True,False
+142,Impatiens,Warm Season,Ornamental,Balsaminaceae,40,60,80,90,-1,False,10.0,70,1,Partial Shade,False,True,False,False,False
+143,Begonia,Warm Season,Ornamental,Begoniaceae,40,60,80,90,-1,False,10.0,70,2,Partial Shade,False,False,False,True,False
+144,Petunia,Warm Season,Ornamental,Solanaceae,35,60,80,90,-1,False,10.0,70,1,Full Sun,True,True,True,False,False
+145,Geranium,Warm Season,Ornamental,Geraniaceae,35,60,80,90,-1,False,8.0,90,2,Full Sun,True,True,False,True,False
+146,Fuchsia,Warm Season,Ornamental,Onagraceae,35,55,75,85,-1,False,8.0,90,2,Partial Shade,True,False,True,False,False
+147,Dahlia,Warm Season,Ornamental,Asteraceae,40,60,85,95,-1,False,6.0,90,4,Full Sun,True,True,False,False,True
+148,Gladiolus,Warm Season,Ornamental,Iridaceae,40,60,85,95,1,True,0.0,90,1,Full Sun,True,True,False,False,True
+149,Canna Lily,Warm Season,Ornamental,Cannaceae,50,65,90,100,-1,False,6.0,90,4,Full Sun,False,True,True,False,False
+150,Crocosmia,Cool Season,Ornamental,Iridaceae,20,55,80,90,2,True,0.0,90,1,Full Sun,True,False,True,False,False
+151,Foxglove,Cool Season,Ornamental,Plantaginaceae,20,50,75,85,2,False,6.0,365,2,Partial Shade,True,False,True,True,False
+152,Hollyhock,Cool Season,Ornamental,Malvaceae,20,55,80,90,2,True,0.0,365,2,Full Sun,True,True,True,False,True
+153,Delphinium,Cool Season,Ornamental,Ranunculaceae,20,50,75,85,4,False,8.0,90,2,Full Sun,True,True,False,True,True
+154,Lupine,Cool Season,Ornamental,Fabaceae,20,50,75,85,4,True,0.0,90,2,Full Sun,True,True,False,False,False
+155,Columbine,Cool Season,Ornamental,Ranunculaceae,20,50,75,85,4,True,0.0,90,2,Partial Shade,True,True,True,False,False
+156,Bleeding Heart,Cool Season,Ornamental,Papaveraceae,20,45,70,80,4,False,8.0,90,4,Full Shade,False,False,True,True,False
+157,Astilbe,Cool Season,Ornamental,Saxifragaceae,20,50,75,85,4,False,8.0,90,4,Partial Shade,True,True,False,False,False
+158,Hosta,Cool Season,Vegetable/Fruit,Asparagaceae,20,50,75,85,4,False,8.0,90,4,Full Shade,True,False,False,False,False
+159,Fern,Cool Season,Ornamental,Polypodiaceae,20,45,70,80,4,False,8.0,365,4,Full Shade,False,False,False,False,False
+160,Hellebore,Cool Season,Ornamental,Ranunculaceae,15,45,65,75,4,False,8.0,365,4,Partial Shade,True,False,False,True,False
+161,Echinacea (Coneflower),Cool Season,Ornamental,Asteraceae,20,55,80,90,2,False,8.0,90,2,Full Sun,True,True,False,False,False
+162,Black Eyed Susan,Cool Season,Ornamental,Asteraceae,20,55,80,95,2,True,0.0,90,2,Full Sun,True,True,False,False,False
+163,Shasta Daisy,Cool Season,Ornamental,Asteraceae,20,55,80,90,2,False,6.0,90,2,Full Sun,True,True,False,False,False
+164,Coreopsis,Cool Season,Ornamental,Asteraceae,20,55,80,95,2,True,0.0,60,1,Full Sun,True,True,False,False,False
+165,Gaillardia,Warm Season,Ornamental,Asteraceae,20,60,85,100,1,True,0.0,60,1,Full Sun,True,True,False,False,False
+166,Liatris,Cool Season,Ornamental,Asteraceae,20,55,80,90,2,False,6.0,90,2,Full Sun,True,True,True,False,True
+167,Rudbeckia,Cool Season,Ornamental,Asteraceae,20,55,80,95,2,True,0.0,90,2,Full Sun,True,True,False,False,False
+168,Salvia,Warm Season,Ornamental,Lamiaceae,25,60,85,95,1,False,8.0,90,2,Full Sun,True,True,True,False,False
+169,Agastache,Warm Season,Ornamental,Lamiaceae,20,60,85,95,1,False,8.0,90,2,Full Sun,True,True,True,False,False
+170,Monarda,Cool Season,Ornamental,Lamiaceae,20,55,80,90,2,False,6.0,90,4,Full Sun,True,True,True,False,False
+171,Catmint,Cool Season,Ornamental,Lamiaceae,20,55,80,90,2,False,6.0,90,4,Full Sun,True,True,False,False,False
+172,Russian Sage,Cool Season,Ornamental,Lamiaceae,20,60,85,100,2,False,6.0,90,4,Full Sun,True,True,False,False,False
+173,Veronicastrum,Cool Season,Ornamental,Plantaginaceae,20,55,80,90,2,False,8.0,90,4,Full Sun,True,True,False,False,False
+174,Penstemon,Cool Season,Ornamental,Plantaginaceae,15,55,80,90,2,False,8.0,90,2,Full Sun,True,True,True,False,False
+175,Campanula,Cool Season,Ornamental,Campanulaceae,20,50,75,85,4,False,8.0,90,2,Partial Shade,True,True,False,False,False
+176,Scabiosa,Cool Season,Ornamental,Caprifoliaceae,20,55,80,90,2,True,0.0,90,2,Full Sun,True,True,False,False,False
+177,Verbena,Warm Season,Ornamental,Verbenaceae,25,60,85,95,1,False,8.0,70,2,Full Sun,True,True,False,False,False
+178,Helenium,Cool Season,Ornamental,Asteraceae,20,55,80,90,2,False,6.0,90,4,Full Sun,True,True,False,False,False
+179,Heliopsis,Cool Season,Ornamental,Asteraceae,20,55,80,90,2,True,0.0,90,4,Full Sun,True,True,False,False,False
+180,Achillea (Yarrow),Cool Season,Ornamental,Asteraceae,20,55,80,95,2,True,0.0,90,2,Full Sun,True,True,False,False,False
+181,Allium,Cool Season,Ornamental,Alliaceae,10,50,75,85,4,True,0.0,90,1,Full Sun,True,True,False,False,False
+182,Tulip,Cool Season,Ornamental,Liliaceae,10,45,65,75,4,True,0.0,90,1,Full Sun,True,False,False,False,False
+183,Daffodil,Cool Season,Ornamental,Amaryllidaceae,10,45,65,75,4,True,0.0,90,1,Full Sun,False,False,False,True,False
+184,Hyacinth,Cool Season,Ornamental,Asparagaceae,10,45,65,75,4,True,0.0,90,1,Full Sun,True,False,False,True,False
+185,Crocus,Cool Season,Ornamental,Iridaceae,10,40,60,70,4,True,0.0,90,1,Full Sun,True,True,False,False,False
+186,Iris,Cool Season,Ornamental,Iridaceae,10,50,75,85,4,True,0.0,90,2,Full Sun,True,True,False,True,False
+187,Lily,Warm Season,Ornamental,Liliaceae,10,55,80,90,2,True,0.0,90,2,Full Sun,True,True,False,True,False
+188,Asiatic Lily,Warm Season,Ornamental,Liliaceae,10,55,80,90,2,True,0.0,90,2,Full Sun,True,True,False,True,False
+189,Oriental Lily,Warm Season,Ornamental,Liliaceae,10,55,80,90,2,True,0.0,90,2,Full Sun,True,True,False,True,False
+190,Fritillaria,Cool Season,Ornamental,Liliaceae,10,45,65,75,4,True,0.0,90,1,Partial Shade,True,False,False,True,False
+191,Muscari,Cool Season,Ornamental,Asparagaceae,10,40,65,75,4,True,0.0,90,1,Full Sun,True,True,False,False,False
+192,Camassia,Cool Season,Ornamental,Asparagaceae,10,45,70,80,4,True,0.0,90,1,Full Sun,True,True,False,False,False
+193,Anemone,Cool Season,Ornamental,Ranunculaceae,20,50,70,80,4,True,0.0,90,1,Partial Shade,True,True,False,True,False
+194,Ranunculus,Cool Season,Ornamental,Ranunculaceae,28,50,70,80,4,True,0.0,90,1,Full Sun,True,True,False,False,False
+195,Freesia,Warm Season,Ornamental,Iridaceae,28,55,75,85,2,True,0.0,90,1,Full Sun,True,True,False,False,False
+196,Ixia,Warm Season,Ornamental,Iridaceae,28,55,75,85,2,True,0.0,90,1,Full Sun,True,False,False,False,False
+197,Watsonia,Warm Season,Ornamental,Iridaceae,25,55,75,85,2,True,0.0,90,2,Full Sun,True,False,False,False,True
+198,Agapanthus,Warm Season,Ornamental,Amaryllidaceae,25,60,80,90,-1,False,8.0,90,4,Full Sun,True,True,False,False,False
+199,Crocosmia Lucifer,Warm Season,Ornamental,Iridaceae,15,55,80,90,2,True,0.0,90,2,Full Sun,True,False,True,False,False
+200,Scilla,Cool Season,Ornamental,Asparagaceae,10,40,65,75,4,True,0.0,90,1,Partial Shade,True,True,False,False,False
+201,Sweet Corn,Warm Season,Vegetable/Fruit,Poaceae,50,60,85,95,1,True,0.0,80,1,Full Sun,False,False,False,False,False
+202,Popcorn,Warm Season,Vegetable/Fruit,Poaceae,50,60,85,95,1,True,0.0,100,1,Full Sun,False,False,False,False,False
+203,Ornamental Corn,Warm Season,Vegetable/Fruit,Poaceae,50,60,85,95,1,True,0.0,110,1,Full Sun,False,False,False,False,False
+204,Asparagus,Perennial,Vegetable/Fruit,Asparagaceae,20,55,80,90,2,False,8.0,730,2,Full Sun,True,False,False,False,False
+205,Artichoke,Perennial,Vegetable/Fruit,Asteraceae,28,60,80,90,-1,False,8.0,365,9,Full Sun,True,True,False,False,False
+206,Jerusalem Artichoke,Perennial,Vegetable/Fruit,Asteraceae,20,55,80,90,2,True,0.0,120,4,Full Sun,True,True,False,False,False
+207,Rhubarb,Perennial,Vegetable/Fruit,Polygonaceae,20,50,75,85,2,False,8.0,365,4,Full Sun,False,False,False,True,False
+208,Sorrel,Perennial,Vegetable/Fruit,Polygonaceae,20,50,75,85,4,True,0.0,60,2,Partial Shade,True,False,False,False,False
+209,Radicchio,Cool Season,Vegetable/Fruit,Asteraceae,25,50,70,80,4,True,0.0,80,2,Partial Shade,True,False,False,False,False
+210,Endive,Cool Season,Vegetable/Fruit,Asteraceae,25,50,70,80,4,True,0.0,90,1,Partial Shade,True,False,False,False,False
+211,Escarole,Cool Season,Vegetable/Fruit,Asteraceae,25,50,70,80,4,True,0.0,85,2,Partial Shade,True,False,False,False,False
+212,Frisee,Cool Season,Vegetable/Fruit,Asteraceae,25,50,70,80,4,True,0.0,90,1,Partial Shade,True,False,False,False,False
+213,Mache,Cool Season,Vegetable/Fruit,Valerianaceae,25,40,65,75,6,True,0.0,60,1,Partial Shade,True,False,False,False,False
+214,Claytonia,Cool Season,Vegetable/Fruit,Montiaceae,20,40,65,75,6,True,0.0,40,1,Partial Shade,True,False,False,False,False
+215,Mizuna,Cool Season,Vegetable/Fruit,Brassicaceae,25,45,70,85,6,True,0.0,40,1,Partial Shade,True,False,False,False,False
+216,Tatsoi,Cool Season,Vegetable/Fruit,Brassicaceae,25,45,70,80,6,True,0.0,45,1,Partial Shade,True,False,False,False,False
+217,Mustard Greens,Cool Season,Vegetable/Fruit,Brassicaceae,25,45,70,85,6,True,0.0,40,1,Full Sun,True,False,False,False,False
+218,Collard Greens,Cool Season,Vegetable/Fruit,Brassicaceae,20,45,75,85,6,True,0.0,60,2,Full Sun,True,False,False,False,False
+219,Watercress,Cool Season,Vegetable/Fruit,Brassicaceae,28,50,70,80,4,True,0.0,50,1,Partial Shade,True,False,False,False,False
+220,Purslane,Cool Season,Vegetable/Fruit,Portulacaceae,35,60,80,100,1,True,0.0,50,1,Full Sun,True,False,False,False,False
+221,Amaranth,Warm Season,Vegetable/Fruit,Amaranthaceae,40,65,85,100,1,True,0.0,60,2,Full Sun,True,True,False,False,False
+222,Quinoa,Cool Season,Vegetable/Fruit,Amaranthaceae,28,50,75,85,4,True,0.0,90,2,Full Sun,True,False,False,False,False
+223,Millet,Warm Season,Vegetable/Fruit,Poaceae,50,65,85,100,1,True,0.0,75,1,Full Sun,True,False,False,False,False
+224,Sunflower (seeds),Warm Season,Vegetable/Fruit,Asteraceae,35,60,85,95,1,True,0.0,80,1,Full Sun,True,True,False,False,False
+225,Borage (culinary),Cool Season,Herb,Boraginaceae,28,55,80,90,2,True,0.0,56,2,Full Sun,True,True,False,False,False
+226,Nasturtium (culinary),Warm Season,Herb,Tropaeolaceae,30,55,80,90,1,True,0.0,55,2,Full Sun,True,True,False,False,False
+227,Shiso,Warm Season,Herb,Lamiaceae,50,65,85,95,-1,True,0.0,60,1,Full Sun,True,False,False,False,False
+228,Vietnamese Coriander,Warm Season,Herb,Polygonaceae,50,65,85,95,-1,False,6.0,60,1,Partial Shade,True,False,False,False,False
+229,Thai Basil,Warm Season,Herb,Lamiaceae,50,65,85,95,-1,False,4.0,30,1,Full Sun,True,True,False,False,False
+230,Lemon Basil,Warm Season,Herb,Lamiaceae,50,65,85,95,-1,False,4.0,30,1,Full Sun,True,True,False,False,False
+231,Purple Basil,Warm Season,Herb,Lamiaceae,50,65,85,95,-1,False,4.0,30,1,Full Sun,True,True,False,False,False
+232,Tulsi,Warm Season,Herb,Lamiaceae,50,65,85,100,-1,False,6.0,60,1,Full Sun,True,True,False,False,False
+233,Epazote,Warm Season,Herb,Amaranthaceae,35,60,85,100,1,True,0.0,60,1,Full Sun,True,False,False,False,False
+234,Mexican Oregano,Warm Season,Herb,Lamiaceae,40,65,85,105,1,False,6.0,75,1,Full Sun,True,True,False,False,False
+235,Greek Oregano,Cool Season,Herb,Lamiaceae,20,55,80,100,2,False,6.0,80,1,Full Sun,True,True,False,False,False
+236,Cuban Oregano,Warm Season,Herb,Lamiaceae,50,65,85,100,-1,False,6.0,75,2,Full Sun,True,True,False,False,False
+237,Spearmint,Cool Season,Herb,Lamiaceae,20,55,80,90,2,False,6.0,90,2,Partial Shade,True,True,False,False,False
+238,Peppermint,Cool Season,Herb,Lamiaceae,20,55,80,90,2,False,6.0,90,2,Partial Shade,True,True,False,False,False
+239,Chocolate Mint,Cool Season,Herb,Lamiaceae,20,55,80,90,2,False,6.0,90,2,Partial Shade,True,True,False,False,False
+240,Apple Mint,Cool Season,Herb,Lamiaceae,20,55,80,90,2,False,6.0,90,2,Partial Shade,True,True,False,False,False
+241,Watermint,Cool Season,Herb,Lamiaceae,20,50,75,85,2,False,6.0,90,2,Partial Shade,True,True,False,False,False
+242,Pennyroyal,Cool Season,Herb,Lamiaceae,20,50,75,85,2,False,6.0,90,2,Partial Shade,True,False,False,True,False
+243,French Tarragon,Cool Season,Herb,Asteraceae,20,55,80,90,2,False,6.0,60,2,Full Sun,True,False,False,False,False
+244,Russian Tarragon,Cool Season,Herb,Asteraceae,20,55,80,90,2,True,0.0,60,2,Full Sun,True,False,False,False,False
+245,Flat Leaf Parsley,Cool Season,Herb,Apiaceae,28,50,75,85,4,False,6.0,70,1,Partial Shade,True,True,False,False,False
+246,Curly Parsley,Cool Season,Herb,Apiaceae,28,50,75,85,4,False,6.0,70,1,Partial Shade,True,True,False,False,False
+247,Hamburg Parsley,Cool Season,Herb,Apiaceae,28,50,75,85,4,False,6.0,90,1,Partial Shade,True,True,False,False,False
+248,Cutting Celery,Cool Season,Herb,Apiaceae,28,55,75,85,6,False,10.0,90,2,Partial Shade,True,True,False,False,False
+249,Garlic Chive,Cool Season,Herb,Alliaceae,20,50,80,90,4,True,0.0,60,1,Full Sun,True,True,False,False,False
+250,Society Garlic,Cool Season,Herb,Alliaceae,25,55,80,90,2,False,6.0,90,2,Full Sun,True,True,False,False,False
+251,Watermelon Radish,Cool Season,Vegetable/Fruit,Brassicaceae,28,45,65,75,6,True,0.0,60,1,Full Sun,True,False,False,False,False
+252,Daikon Radish,Cool Season,Vegetable/Fruit,Brassicaceae,28,45,65,75,6,True,0.0,60,1,Full Sun,True,False,False,False,False
+253,Black Radish,Cool Season,Vegetable/Fruit,Brassicaceae,28,45,65,75,6,True,0.0,55,1,Full Sun,True,False,False,False,False
+254,French Breakfast Radish,Cool Season,Vegetable/Fruit,Brassicaceae,28,45,65,75,6,True,0.0,25,1,Full Sun,True,False,False,False,False
+255,Chioggia Beet,Cool Season,Vegetable/Fruit,Amaranthaceae,28,50,75,85,4,True,0.0,55,1,Full Sun,True,False,False,False,False
+256,Golden Beet,Cool Season,Vegetable/Fruit,Amaranthaceae,28,50,75,85,4,True,0.0,55,1,Full Sun,True,False,False,False,False
+257,Cylindra Beet,Cool Season,Vegetable/Fruit,Amaranthaceae,28,50,75,85,4,True,0.0,60,1,Full Sun,True,False,False,False,False
+258,Nantes Carrot,Cool Season,Vegetable/Fruit,Apiaceae,28,50,75,85,4,True,0.0,70,1,Full Sun,True,True,False,False,False
+259,Chantenay Carrot,Cool Season,Vegetable/Fruit,Apiaceae,28,50,75,85,4,True,0.0,70,1,Full Sun,True,True,False,False,False
+260,Danvers Carrot,Cool Season,Vegetable/Fruit,Apiaceae,28,50,75,85,4,True,0.0,75,1,Full Sun,True,True,False,False,False
+261,Imperator Carrot,Cool Season,Vegetable/Fruit,Apiaceae,28,50,75,85,4,True,0.0,80,1,Full Sun,True,True,False,False,False
+262,Cosmic Purple Carrot,Cool Season,Vegetable/Fruit,Apiaceae,28,50,75,85,4,True,0.0,70,1,Full Sun,True,True,False,False,False
+263,Dragon Carrot,Cool Season,Vegetable/Fruit,Apiaceae,28,50,75,85,4,True,0.0,75,1,Full Sun,True,True,False,False,False
+264,Rainbow Chard,Cool Season,Vegetable/Fruit,Amaranthaceae,25,50,75,85,4,True,0.0,55,2,Full Sun,True,False,False,False,False
+265,Red Russian Kale,Cool Season,Vegetable/Fruit,Brassicaceae,20,45,75,85,6,True,0.0,55,2,Full Sun,True,False,False,False,False
+266,Lacinato Kale,Cool Season,Vegetable/Fruit,Brassicaceae,20,45,75,85,6,True,0.0,60,2,Full Sun,True,False,False,False,False
+267,Curly Kale,Cool Season,Vegetable/Fruit,Brassicaceae,20,45,75,85,6,True,0.0,60,2,Full Sun,True,False,False,False,False
+268,Siberian Kale,Cool Season,Vegetable/Fruit,Brassicaceae,15,45,75,85,6,True,0.0,55,2,Full Sun,True,False,False,False,False
+269,Butterhead Lettuce,Cool Season,Vegetable/Fruit,Asteraceae,28,45,65,75,4,True,0.0,55,1,Partial Shade,False,False,False,False,False
+270,Romaine Lettuce,Cool Season,Vegetable/Fruit,Asteraceae,28,45,65,75,4,True,0.0,70,1,Partial Shade,False,False,False,False,False
+271,Looseleaf Lettuce,Cool Season,Vegetable/Fruit,Asteraceae,28,45,65,75,4,True,0.0,45,1,Partial Shade,False,False,False,False,False
+272,Iceberg Lettuce,Cool Season,Vegetable/Fruit,Asteraceae,28,45,65,75,4,False,4.0,80,1,Partial Shade,False,False,False,False,False
+273,Oakleaf Lettuce,Cool Season,Vegetable/Fruit,Asteraceae,28,45,65,75,4,True,0.0,50,1,Partial Shade,False,False,False,False,False
+274,Malabar Spinach,Warm Season,Vegetable/Fruit,Basellaceae,50,65,85,100,-1,False,6.0,60,2,Full Sun,True,False,False,False,False
+275,New Zealand Spinach,Warm Season,Vegetable/Fruit,Tetragoniaceae,45,60,85,95,1,True,0.0,70,4,Full Sun,True,False,False,False,False
+276,Orach,Cool Season,Vegetable/Fruit,Amaranthaceae,25,50,75,85,4,True,0.0,50,2,Full Sun,True,False,False,False,False
+277,Good King Henry,Perennial,Vegetable/Fruit,Amaranthaceae,20,50,75,85,2,False,6.0,365,2,Partial Shade,True,False,False,False,False
+278,Ground Cherry,Warm Season,Vegetable/Fruit,Solanaceae,45,60,85,95,1,False,6.0,70,4,Full Sun,True,False,False,False,True
+279,Tomatillo,Warm Season,Vegetable/Fruit,Solanaceae,50,65,85,95,-1,False,6.0,75,4,Full Sun,True,False,False,False,True
+280,Luffa,Warm Season,Vegetable/Fruit,Cucurbitaceae,60,70,90,100,1,True,0.0,120,9,Full Sun,True,False,False,False,True
+281,Bitter Melon,Warm Season,Vegetable/Fruit,Cucurbitaceae,60,70,90,100,1,True,0.0,90,9,Full Sun,True,False,False,False,True
+282,Dragon Tongue Bean,Warm Season,Vegetable/Fruit,Fabaceae,50,60,80,90,1,True,0.0,55,1,Full Sun,True,False,False,False,False
+283,Scarlet Runner Bean,Warm Season,Vegetable/Fruit,Fabaceae,45,60,80,90,1,True,0.0,70,2,Full Sun,True,True,True,False,True
+284,Yardlong Bean,Warm Season,Vegetable/Fruit,Fabaceae,55,65,85,100,1,True,0.0,80,1,Full Sun,True,False,False,False,True

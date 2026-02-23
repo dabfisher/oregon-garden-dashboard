@@ -28,7 +28,7 @@ for city, coords in cities.items():
         f"https://archive-api.open-meteo.com/v1/archive"
         f"?latitude={lat}&longitude={lon}"
         f"&start_date=1940-01-01&end_date={date.today()}"
-        f"&daily=temperature_2m_min,soil_temperature_0_to_7cm_mean,soil_temperature_7_to_28cm_mean"
+        f"&daily=temperature_2m_min,temperature_2m_max,soil_temperature_0_to_7cm_mean,soil_temperature_7_to_28cm_mean"
         f"&timezone=America%2FLos_Angeles"
         f"&temperature_unit=fahrenheit"
     )
@@ -43,6 +43,7 @@ for city, coords in cities.items():
     df = pd.DataFrame({
         "date": data["daily"]["time"],
         "temp_min": data["daily"]["temperature_2m_min"],
+        "temp_max": data["daily"]["temperature_2m_max"],
         "soil_temp_0_7cm": data["daily"]["soil_temperature_0_to_7cm_mean"],
         "soil_temp_7_to_28cm": data["daily"]["soil_temperature_7_to_28cm_mean"]
     })
