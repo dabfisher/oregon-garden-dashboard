@@ -1,10 +1,11 @@
 # ingest_forecast.py
 # Pulls 30 days historical + 7 day forecast weather data
 # for 6 Oregon cities from the Open-Meteo API
-# and saves to data/weather_raw.csv
+# saves to data/weather_raw.csv and rebuilds affected DB tables
 
 import requests
 import pandas as pd
+import duckdb
 
 # Cities
 cities = {
@@ -33,10 +34,13 @@ for city, coords in cities.items():
         f"&forecast_days=7"
     )
 
-
     response = requests.get(url)
     print(f"{city}: {response.status_code}")
-    print(response.text[:500])
+
+    if response.status_code != 200:
+        print(f"{city}: failed, skipping")
+        continue
+
     data = response.json()
 
     df = pd.DataFrame({
@@ -50,5 +54,70 @@ for city, coords in cities.items():
     all_cities.append(df)
 
 final_df = pd.concat(all_cities, ignore_index=True)
-
 final_df.to_csv("data/weather_raw.csv", index=False)
+print("weather_raw.csv saved")
+
+# Rebuild affected tables in weather.db
+con = duckdb.connect("data/weather.db")
+
+con.execute("""
+    CREATE OR REPLACE TABLE raw_weather AS
+    SELECT * FROM read_csv_auto('data/weather_raw.csv')
+""")
+print("raw_weather rebuilt")
+
+con.execute("""
+    CREATE OR REPLACE TABLE six_weeks_weather AS
+    WITH daily_avg AS (
+        SELECT
+            city,
+            date,
+            temp_max,
+            temp_min,
+            ROUND((temp_max + temp_min) / 2, 1) AS temp_avg,
+            precipitation
+        FROM raw_weather
+    )
+    SELECT
+        city,
+        date,
+        temp_avg,
+        temp_max,
+        temp_min,
+        precipitation
+    FROM daily_avg
+""")
+print("six_weeks_weather rebuilt")
+
+con.execute("""
+    CREATE OR REPLACE TABLE irrigation_tracker AS
+    WITH weekly_rain AS (
+        SELECT
+            city,
+            DATE_TRUNC('week', date::DATE) AS week_start,
+            ROUND(SUM(precipitation), 3) AS total_rainfall,
+            1.0 AS rainfall_needed
+        FROM raw_weather
+        GROUP BY
+            city,
+            DATE_TRUNC('week', date::DATE),
+            1.0
+    )
+    SELECT
+        city,
+        week_start,
+        total_rainfall,
+        rainfall_needed,
+        ROUND(total_rainfall - rainfall_needed, 3) AS surplus_deficit,
+        CASE
+            WHEN total_rainfall >= rainfall_needed THEN 'No irrigation needed'
+            WHEN total_rainfall >= 0.5 THEN 'Light irrigation needed'
+            ELSE 'Irrigation needed'
+        END AS irrigation_status
+    FROM weekly_rain
+    ORDER BY city, week_start
+""")
+print("irrigation_tracker rebuilt")
+
+con.close()
+print("Done — all tables updated")
