@@ -97,7 +97,7 @@ con.execute("""
             DATE_TRUNC('week', date::DATE) AS week_start,
             ROUND(SUM(precipitation), 3) AS total_rainfall,
             1.0 AS rainfall_needed
-        FROM raw_weather
+        FROM six_weeks_weather
         GROUP BY
             city,
             DATE_TRUNC('week', date::DATE),

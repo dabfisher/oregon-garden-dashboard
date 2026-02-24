@@ -9,7 +9,7 @@ con = duckdb.connect("data/weather.db")
 
 # Load the raw forecast csv into a table 
 con.execute("""
-    CREATE OR REPLACE TABLE raw_weather AS
+    CREATE OR REPLACE TABLE six_weeks_weather AS
     SELECT * FROM read_csv_auto('data/weather_raw.csv')
 """)
 
@@ -33,7 +33,7 @@ con.execute("""
 
 # Determine when temperature dips into plants that can be planted
 con.execute("""
-    CREATE OR REPLACE TABLE planting_window AS
+    CREATE OR REPLACE TABLE six_weeks_weather AS
     WITH daily_avg AS (
         SELECT
             city,
@@ -42,7 +42,7 @@ con.execute("""
             temp_min,
             ROUND((temp_max + temp_min) / 2, 1) AS temp_avg,
             precipitation
-        FROM raw_weather
+        FROM six_weeks_weather
     )
     SELECT
         city,
@@ -63,7 +63,7 @@ con.execute("""
             DATE_TRUNC('week', date::DATE) AS week_start,
             ROUND(SUM(precipitation), 3) AS total_rainfall,
             1.0 AS rainfall_needed
-        FROM raw_weather
+        FROM six_weeks_weather
         GROUP BY 
             city,
             DATE_TRUNC('week', date::DATE),
