@@ -103,7 +103,7 @@ def update_temperature_chart(selected_city):
     con = duckdb.connect("data/weather.db", read_only=True)
     df = con.execute("""
         SELECT date, temp_max, temp_min
-        FROM planting_window
+        FROM six_weeks_weather
         WHERE city = ?
         ORDER BY date
     """, [selected_city]).df()

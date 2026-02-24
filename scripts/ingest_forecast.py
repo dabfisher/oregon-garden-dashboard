@@ -1,4 +1,4 @@
-# ingest.py
+# ingest_forecast.py
 # Pulls 30 days historical + 7 day forecast weather data
 # for 6 Oregon cities from the Open-Meteo API
 # and saves to data/weather_raw.csv
@@ -30,7 +30,9 @@ for city, coords in cities.items():
         f"&precipitation_unit=inch"
         f"&timezone=America/Los_Angeles"
         f"&past_days=30"
+        f"&forecast_days=7"
     )
+
 
     response = requests.get(url)
     print(f"{city}: {response.status_code}")
