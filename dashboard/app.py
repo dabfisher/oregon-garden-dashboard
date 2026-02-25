@@ -8,6 +8,7 @@ import plotly.graph_objects as go
 import pandas as pd
 from apscheduler.schedulers.background import BackgroundScheduler
 import subprocess
+import os
 
 # Initialize the app
 app = dash.Dash(__name__)
@@ -33,12 +34,9 @@ app.layout = html.Div([
     # Planting Gantt Section
     html.H3(id="freeze-date-display"),
     html.Div([
-        # Left: Gantt chart
         html.Div([
             dcc.Graph(id="gantt-chart")
         ], style={"width": "60%", "display": "inline-block", "verticalAlign": "top"}),
-
-        # Right: Filters + Plant Table
         html.Div([
             dcc.Dropdown(
                 id="growing-season-filter",
@@ -426,9 +424,12 @@ def refresh_forecast():
     print("Forecast refresh complete")
 
 
-scheduler = BackgroundScheduler()
-scheduler.add_job(refresh_forecast, 'cron', hour=6, minute=0)
-scheduler.start()
+try:
+    scheduler = BackgroundScheduler()
+    scheduler.add_job(refresh_forecast, 'cron', hour=6, minute=0)
+    scheduler.start()
+except Exception as e:
+    print(f"Scheduler failed to start: {e}")
 
 
 if __name__ == "__main__":
