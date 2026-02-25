@@ -6,6 +6,8 @@ import duckdb
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
+from apscheduler.schedulers.background import BackgroundScheduler
+import subprocess
 
 # Initialize the app
 app = dash.Dash(__name__)
@@ -330,6 +332,14 @@ def update_plant_table(selected_city, growing_season, harvest_type):
     data = df.to_dict("records")
     return data, columns, season_options, type_options
 
+def refresh_forecast():
+    print("Refreshing forecast data...")
+    subprocess.run(["python", "scripts/ingest_forecast.py"])
+    print("Forecast refresh complete")
+
+scheduler = BackgroundScheduler()
+scheduler.add_job(refresh_forecast, 'cron', hour=6, minute=0)
+scheduler.start()
 
 if __name__ == "__main__":
     app.run(debug=True)
