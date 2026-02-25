@@ -6,8 +6,9 @@ import duckdb
 import plotly.express as px
 import plotly.graph_objects as go
 import pandas as pd
+import os
 from apscheduler.schedulers.background import BackgroundScheduler
-import subprocess
+from scripts.ingest_forecast import run_forecast_ingest
 import os
 
 # Initialize the app
@@ -419,17 +420,19 @@ def update_plant_cards(selected_city):
 
 
 def refresh_forecast():
-    print("Refreshing forecast data...")
-    subprocess.run(["python", "scripts/ingest_forecast.py"])
-    print("Forecast refresh complete")
+    try:
+        print("Starting scheduled forecast ingest...")
+        run_forecast_ingest()
+        print("Scheduled ingest complete")
+    except Exception as e:
+        print(f"Ingest failed safely: {e}")
 
-
-try:
-    scheduler = BackgroundScheduler()
+# Prevent duplicate schedulers if multiple workers ever run
+if os.environ.get("WEB_CONCURRENCY", "1") == "1":
+    scheduler = BackgroundScheduler(daemon=True)
     scheduler.add_job(refresh_forecast, 'cron', hour=6, minute=0)
     scheduler.start()
-except Exception as e:
-    print(f"Scheduler failed to start: {e}")
+    print("Scheduler started")
 
 
 if __name__ == "__main__":

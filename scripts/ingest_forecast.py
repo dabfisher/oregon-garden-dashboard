@@ -6,6 +6,15 @@
 import requests
 import pandas as pd
 import duckdb
+import logging
+import time
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
+
+## Config
+DB_PATH = "data/weather.db"
+CSV_PATH = "data/weather_raw.csv"
+TIMEOUT = 15
 
 # Cities
 cities = {
@@ -17,107 +26,150 @@ cities = {
     "Hood River": {"latitude": 45.7054, "longitude": -121.5217},
 }
 
-all_cities = []
+## Logging
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s - %(levelname)s - %(message)s"
+)
 
-for city, coords in cities.items():
-    lat = coords["latitude"]
-    lon = coords["longitude"]
-
-    url = (
-        f"https://api.open-meteo.com/v1/forecast"
-        f"?latitude={lat}&longitude={lon}"
-        f"&daily=temperature_2m_max,temperature_2m_min,precipitation_sum"
-        f"&temperature_unit=fahrenheit"
-        f"&precipitation_unit=inch"
-        f"&timezone=America/Los_Angeles"
-        f"&past_days=30"
-        f"&forecast_days=7"
+## Session retry
+def get_session():
+    session = requests.Session()
+    retries = Retry(
+        total=3,
+        backoff_factor=1,
+        status_forcelist=[500, 502, 503, 504],
+        allowed_methods=["GET"]
     )
+    adapter = HTTPAdapter(max_retries=retries)
+    session.mount("https://", adapter)
+    return session
 
-    response = requests.get(url)
-    print(f"{city}: {response.status_code}")
+def run_forecast_ingest():
 
-    if response.status_code != 200:
-        print(f"{city}: failed, skipping")
-        continue
+    logging.info("Starting forecast ingest")
 
-    data = response.json()
+    session = get_session()
+    all_cities = []
 
-    df = pd.DataFrame({
-        "date": data["daily"]["time"],
-        "temp_max": data["daily"]["temperature_2m_max"],
-        "temp_min": data["daily"]["temperature_2m_min"],
-        "precipitation": data["daily"]["precipitation_sum"]
-    })
+    for city, coords in cities.items():
+        lat = coords["latitude"]
+        lon = coords["longitude"]
 
-    df["city"] = city
-    all_cities.append(df)
+        url = (
+            f"https://api.open-meteo.com/v1/forecast"
+            f"?latitude={lat}&longitude={lon}"
+            f"&daily=temperature_2m_max,temperature_2m_min,precipitation_sum"
+            f"&temperature_unit=fahrenheit"
+            f"&precipitation_unit=inch"
+            f"&timezone=America/Los_Angeles"
+            f"&past_days=30"
+            f"&forecast_days=7"
+        )
 
-final_df = pd.concat(all_cities, ignore_index=True)
-final_df.to_csv("data/weather_raw.csv", index=False)
-print("weather_raw.csv saved")
+        try:
+            response = session.get(url, timeout=TIMEOUT)
+            response.raise_for_status()
+        except requests.RequestException as e:
+            logging.error(f"{city} request failed: {e}")
+            continue
 
-# Rebuild affected tables in weather.db
-con = duckdb.connect("data/weather.db")
+        try:
+            data = response.json()
+            daily = data["daily"]
+        except Exception as e:
+            logging.error(f"{city} malformed response: {e}")
+            continue
 
-con.execute("""
-    CREATE OR REPLACE TABLE raw_weather AS
-    SELECT * FROM read_csv_auto('data/weather_raw.csv')
-""")
-print("raw_weather rebuilt")
+        try:
+            df = pd.DataFrame({
+                "date": daily["time"],
+                "temp_max": daily["temperature_2m_max"],
+                "temp_min": daily["temperature_2m_min"],
+                "precipitation": daily["precipitation_sum"]
+            })
+            df["city"] = city
+            all_cities.append(df)
+            logging.info(f"{city} success")
+        except Exception as e:
+            logging.error(f"{city} dataframe build failed: {e}")
+            continue
 
-con.execute("""
-    CREATE OR REPLACE TABLE six_weeks_weather AS
-    WITH daily_avg AS (
-        SELECT
-            city,
-            date,
-            temp_max,
-            temp_min,
-            ROUND((temp_max + temp_min) / 2, 1) AS temp_avg,
-            precipitation
-        FROM raw_weather
-    )
-    SELECT
-        city,
-        date,
-        temp_avg,
-        temp_max,
-        temp_min,
-        precipitation
-    FROM daily_avg
-""")
-print("six_weeks_weather rebuilt")
+    if not all_cities:
+        logging.error("All city fetches failed — aborting ingest safely")
+        return
 
-con.execute("""
-    CREATE OR REPLACE TABLE irrigation_tracker AS
-    WITH weekly_rain AS (
-        SELECT
-            city,
-            DATE_TRUNC('week', date::DATE) AS week_start,
-            ROUND(SUM(precipitation), 3) AS total_rainfall,
-            1.0 AS rainfall_needed
-        FROM six_weeks_weather
-        GROUP BY
-            city,
-            DATE_TRUNC('week', date::DATE),
-            1.0
-    )
-    SELECT
-        city,
-        week_start,
-        total_rainfall,
-        rainfall_needed,
-        ROUND(total_rainfall - rainfall_needed, 3) AS surplus_deficit,
-        CASE
-            WHEN total_rainfall >= rainfall_needed THEN 'No irrigation needed'
-            WHEN total_rainfall >= 0.5 THEN 'Light irrigation needed'
-            ELSE 'Irrigation needed'
-        END AS irrigation_status
-    FROM weekly_rain
-    ORDER BY city, week_start
-""")
-print("irrigation_tracker rebuilt")
+    final_df = pd.concat(all_cities, ignore_index=True)
 
-con.close()
-print("Done — all tables updated")
+    # Write CSV atomically
+    temp_csv = CSV_PATH + ".tmp"
+    final_df.to_csv(temp_csv, index=False)
+    import os
+    os.replace(temp_csv, CSV_PATH)
+    logging.info("weather_raw.csv updated")
+
+## Rebuild DB tables
+    try:
+        con = duckdb.connect(DB_PATH)
+
+        con.execute("""
+            CREATE OR REPLACE TABLE raw_weather AS
+            SELECT * FROM read_csv_auto(?)
+        """, [CSV_PATH])
+
+        con.execute("""
+            CREATE OR REPLACE TABLE six_weeks_weather AS
+            WITH daily_avg AS (
+                SELECT
+                    city,
+                    date,
+                    temp_max,
+                    temp_min,
+                    ROUND((temp_max + temp_min) / 2, 1) AS temp_avg,
+                    precipitation
+                FROM raw_weather
+            )
+            SELECT
+                city,
+                date,
+                temp_avg,
+                temp_max,
+                temp_min,
+                precipitation
+            FROM daily_avg
+        """)
+
+        con.execute("""
+            CREATE OR REPLACE TABLE irrigation_tracker AS
+            WITH weekly_rain AS (
+                SELECT
+                    city,
+                    DATE_TRUNC('week', date::DATE) AS week_start,
+                    ROUND(SUM(precipitation), 3) AS total_rainfall,
+                    1.0 AS rainfall_needed
+                FROM six_weeks_weather
+                GROUP BY city, DATE_TRUNC('week', date::DATE)
+            )
+            SELECT
+                city,
+                week_start,
+                total_rainfall,
+                rainfall_needed,
+                ROUND(total_rainfall - rainfall_needed, 3) AS surplus_deficit,
+                CASE
+                    WHEN total_rainfall >= rainfall_needed THEN 'No irrigation needed'
+                    WHEN total_rainfall >= 0.5 THEN 'Light irrigation needed'
+                    ELSE 'Irrigation needed'
+                END AS irrigation_status
+            FROM weekly_rain
+            ORDER BY city, week_start
+        """)
+
+        con.close()
+        logging.info("DuckDB tables rebuilt successfully")
+
+    except Exception as e:
+        logging.error(f"DuckDB update failed: {e}")
+        return
+
+    logging.info("Forecast ingest complete")
