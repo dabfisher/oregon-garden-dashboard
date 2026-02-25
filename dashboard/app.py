@@ -21,7 +21,7 @@ app.layout = html.Div([
     html.P("Live Insights for Garden Management"),
     dcc.Dropdown(
         id="city-dropdown",
-        options=[],  # will be populated by callback
+        options=[],
         value="Portland",
         clearable=False
     ),
@@ -76,7 +76,11 @@ app.layout = html.Div([
                 page_size=500
             )
         ], style={"width": "38%", "display": "inline-block", "verticalAlign": "top", "paddingLeft": "2%"})
-    ])
+    ]),
+
+    # What to Plant This Week Section
+    html.H3("What to Plant This Week"),
+    html.Div(id="plant-cards")
 ])
 
 
@@ -332,14 +336,100 @@ def update_plant_table(selected_city, growing_season, harvest_type):
     data = df.to_dict("records")
     return data, columns, season_options, type_options
 
+
+@app.callback(
+    Output("plant-cards", "children"),
+    Input("city-dropdown", "value")
+)
+def update_plant_cards(selected_city):
+    if not selected_city:
+        return []
+    con = duckdb.connect("data/weather.db", read_only=True)
+
+    forecast = con.execute("""
+        SELECT date, temp_max, temp_min
+        FROM six_weeks_weather
+        WHERE city = ?
+        AND date >= CURRENT_DATE
+        AND date < CURRENT_DATE + 7
+        ORDER BY date
+    """, [selected_city]).df()
+
+    plants = con.execute("""
+        SELECT
+            common_name,
+            plant_family,
+            min_viable_temp_f,
+            max_viable_temp_f,
+            CASE WHEN direct_sow THEN 'Direct Sow'
+                 ELSE CAST(weeks_indoor_before_transplant AS VARCHAR) || ' weeks indoor'
+            END AS sow_method
+        FROM plants
+    """).df()
+    con.close()
+
+    if forecast.empty:
+        return [html.P("No forecast data available.")]
+
+    viable_plants = []
+    for _, plant in plants.iterrows():
+        viable_days = forecast[
+            (forecast["temp_max"] >= plant["min_viable_temp_f"]) &
+            (forecast["temp_max"] <= plant["max_viable_temp_f"])
+        ].shape[0]
+
+        if viable_days >= 4:
+            viable_plants.append({
+                "name": plant["common_name"],
+                "family": plant["plant_family"],
+                "sow_method": plant["sow_method"],
+                "viable_days": viable_days
+            })
+
+    if not viable_plants:
+        return [html.P("No plants are viable this week based on forecast temperatures.")]
+
+    viable_plants.sort(key=lambda x: x["viable_days"], reverse=True)
+
+    cards = []
+    for plant in viable_plants:
+        cards.append(
+            html.Div([
+                html.Strong(plant["name"]),
+                html.Br(),
+                html.Span(plant["family"],
+                    style={"fontSize": "11px", "color": "#666"}),
+                html.Br(),
+                html.Span(plant["sow_method"],
+                    style={"fontSize": "11px"}),
+                html.Br(),
+                html.Span(f"{plant['viable_days']}/7 days viable",
+                    style={"fontSize": "11px", "color": "#4a9d4a", "fontWeight": "bold"})
+            ], style={
+                "display": "inline-block",
+                "border": "1px solid #ddd",
+                "borderRadius": "8px",
+                "padding": "10px",
+                "margin": "5px",
+                "width": "140px",
+                "verticalAlign": "top",
+                "backgroundColor": "#f9f9f9"
+            })
+        )
+
+    return cards
+
+
 def refresh_forecast():
     print("Refreshing forecast data...")
     subprocess.run(["python", "scripts/ingest_forecast.py"])
     print("Forecast refresh complete")
 
+
 scheduler = BackgroundScheduler()
 scheduler.add_job(refresh_forecast, 'cron', hour=6, minute=0)
 scheduler.start()
+
 
 if __name__ == "__main__":
     app.run(debug=True)
