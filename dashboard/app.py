@@ -550,15 +550,7 @@ def refresh_forecast():
 
 if os.environ.get("WEB_CONCURRENCY", "1") == "1":
     try:
-        # TEST: fires 10 minutes after deploy
-        fire_time = datetime.now() + timedelta(minutes=10)
-        scheduler = BackgroundScheduler(
-            daemon=True,
-            timezone=pytz.timezone("America/Los_Angeles")
-        )
-        scheduler.add_job(refresh_forecast, 'date', run_date=fire_time)
-        # PRODUCTION: uncomment below and remove the two lines above
-        # scheduler.add_job(refresh_forecast, 'cron', hour=6, minute=0)
+        scheduler.add_job(refresh_forecast, 'cron', hour=12, minute=0)
         scheduler.start()
         print(f"Scheduler started — test fire at {fire_time}")
     except Exception as e:
