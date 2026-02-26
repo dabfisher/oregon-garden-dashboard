@@ -9,7 +9,7 @@ con = duckdb.connect("data/weather.db")
 
 # Load the raw forecast csv into a table 
 con.execute("""
-    CREATE OR REPLACE TABLE six_weeks_weather AS
+    CREATE OR REPLACE TABLE raw_weather AS
     SELECT * FROM read_csv_auto('data/weather_raw.csv')
 """)
 
@@ -42,7 +42,7 @@ con.execute("""
             temp_min,
             ROUND((temp_max + temp_min) / 2, 1) AS temp_avg,
             precipitation
-        FROM six_weeks_weather
+        FROM raw_weather
     )
     SELECT
         city,
