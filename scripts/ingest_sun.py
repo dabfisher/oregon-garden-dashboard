@@ -3,6 +3,7 @@
 # for 6 Oregon cities from the Open-Meteo API
 # and saves to data/sun_times.csv
 
+import os
 import requests
 import pandas as pd
 from datetime import date
@@ -53,13 +54,22 @@ for city, coords in cities.items():
         "nautical_twilight_end": "evening_twilight"
         })
 
+    # Convert 12h AM/PM times to 24h HH:MM:SS so DuckDB can cast directly to TIME
+    time_cols = ['morning_twilight', 'sunrise', 'solar_noon', 'sunset', 'evening_twilight']
+    for col in time_cols:
+        df[col] = pd.to_datetime(df[col], format='%I:%M:%S %p').dt.strftime('%H:%M:%S')
+
     df["city"] = city
     all_cities.append(df)
 
-    time.sleep(60) # Call exceeding
+    time.sleep(60) # Rate limit
     print(f"{city} is done")
 
 final_df = pd.concat(all_cities, ignore_index=True)
 
-final_df.to_csv("data/sun_times.csv", index=False)
+# ── Paths (always relative to this file) ─────────────────────────────────────
+_HERE = os.path.dirname(os.path.abspath(__file__))
+_ROOT = os.path.dirname(_HERE)
+final_df.to_csv(os.path.join(_ROOT, "data", "sun_times.csv"), index=False)
+print("sun_times.csv saved")
 

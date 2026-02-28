@@ -3,36 +3,38 @@
 # for 6 Oregon cities from the Open-Meteo API
 # saves to data/weather_raw.csv and rebuilds affected DB tables
 
+import os
 import requests
 import pandas as pd
 import duckdb
 import logging
-import time
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-## Config
-DB_PATH = "data/weather.db"
-CSV_PATH = "data/weather_raw.csv"
-TIMEOUT = 15
+# ── Paths (always relative to this file, not the working directory) ──────────
+_HERE    = os.path.dirname(os.path.abspath(__file__))
+_ROOT    = os.path.dirname(_HERE)           # project root (one level up from scripts/)
+DB_PATH  = os.path.join(_ROOT, "data", "weather.db")
+CSV_PATH = os.path.join(_ROOT, "data", "weather_raw.csv")
+TIMEOUT  = 15
 
-# Cities
+# ── Cities ───────────────────────────────────────────────────────────────────
 cities = {
-    "Portland": {"latitude": 45.5051, "longitude": -122.6750},
-    "Eugene": {"latitude": 44.0521, "longitude": -123.0868},
-    "Medford": {"latitude": 42.3265, "longitude": -122.8756},
-    "Bend": {"latitude": 44.0582, "longitude": -121.3153},
-    "Astoria": {"latitude": 46.1879, "longitude": -123.8313},
+    "Portland":   {"latitude": 45.5051, "longitude": -122.6750},
+    "Eugene":     {"latitude": 44.0521, "longitude": -123.0868},
+    "Medford":    {"latitude": 42.3265, "longitude": -122.8756},
+    "Bend":       {"latitude": 44.0582, "longitude": -121.3153},
+    "Astoria":    {"latitude": 46.1879, "longitude": -123.8313},
     "Hood River": {"latitude": 45.7054, "longitude": -121.5217},
 }
 
-## Logging
+# ── Logging ───────────────────────────────────────────────────────────────────
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s"
 )
 
-## Session retry
+# ── Session with retry ────────────────────────────────────────────────────────
 def get_session():
     session = requests.Session()
     retries = Retry(
@@ -41,17 +43,17 @@ def get_session():
         status_forcelist=[500, 502, 503, 504],
         allowed_methods=["GET"]
     )
-    adapter = HTTPAdapter(max_retries=retries)
-    session.mount("https://", adapter)
+    session.mount("https://", HTTPAdapter(max_retries=retries))
     return session
 
-def run_forecast_ingest():
 
+def run_forecast_ingest():
     logging.info("Starting forecast ingest")
 
     session = get_session()
     all_cities = []
 
+    # ── Fetch from API ────────────────────────────────────────────────────────
     for city, coords in cities.items():
         lat = coords["latitude"]
         lon = coords["longitude"]
@@ -83,10 +85,10 @@ def run_forecast_ingest():
 
         try:
             df = pd.DataFrame({
-                "date": daily["time"],
-                "temp_max": daily["temperature_2m_max"],
-                "temp_min": daily["temperature_2m_min"],
-                "precipitation": daily["precipitation_sum"]
+                "date":          daily["time"],
+                "temp_max":      daily["temperature_2m_max"],
+                "temp_min":      daily["temperature_2m_min"],
+                "precipitation": daily["precipitation_sum"],
             })
             df["city"] = city
             all_cities.append(df)
@@ -101,14 +103,13 @@ def run_forecast_ingest():
 
     final_df = pd.concat(all_cities, ignore_index=True)
 
-    # Write CSV atomically
+    # ── Write CSV atomically ──────────────────────────────────────────────────
     temp_csv = CSV_PATH + ".tmp"
     final_df.to_csv(temp_csv, index=False)
-    import os
     os.replace(temp_csv, CSV_PATH)
-    logging.info("weather_raw.csv updated")
+    logging.info(f"weather_raw.csv updated -> {CSV_PATH}")
 
-## Rebuild DB tables
+    # ── Rebuild DB tables ─────────────────────────────────────────────────────
     try:
         con = duckdb.connect(DB_PATH)
 
@@ -119,24 +120,14 @@ def run_forecast_ingest():
 
         con.execute("""
             CREATE OR REPLACE TABLE six_weeks_weather AS
-            WITH daily_avg AS (
-                SELECT
-                    city,
-                    date,
-                    temp_max,
-                    temp_min,
-                    ROUND((temp_max + temp_min) / 2, 1) AS temp_avg,
-                    precipitation
-                FROM raw_weather
-            )
             SELECT
                 city,
                 date,
-                temp_avg,
+                ROUND((temp_max + temp_min) / 2, 1) AS temp_avg,
                 temp_max,
                 temp_min,
                 precipitation
-            FROM daily_avg
+            FROM raw_weather
         """)
 
         con.execute("""
@@ -145,8 +136,8 @@ def run_forecast_ingest():
                 SELECT
                     city,
                     DATE_TRUNC('week', date::DATE) AS week_start,
-                    ROUND(SUM(precipitation), 3) AS total_rainfall,
-                    1.0 AS rainfall_needed
+                    ROUND(SUM(precipitation), 3)   AS total_rainfall,
+                    1.0                             AS rainfall_needed
                 FROM six_weeks_weather
                 GROUP BY city, DATE_TRUNC('week', date::DATE)
             )
@@ -158,8 +149,8 @@ def run_forecast_ingest():
                 ROUND(total_rainfall - rainfall_needed, 3) AS surplus_deficit,
                 CASE
                     WHEN total_rainfall >= rainfall_needed THEN 'No irrigation needed'
-                    WHEN total_rainfall >= 0.5 THEN 'Light irrigation needed'
-                    ELSE 'Irrigation needed'
+                    WHEN total_rainfall >= 0.5             THEN 'Light irrigation needed'
+                    ELSE                                        'Irrigation needed'
                 END AS irrigation_status
             FROM weekly_rain
             ORDER BY city, week_start
@@ -173,3 +164,6 @@ def run_forecast_ingest():
         return
 
     logging.info("Forecast ingest complete")
+
+if __name__ == "__main__":
+    run_forecast_ingest()

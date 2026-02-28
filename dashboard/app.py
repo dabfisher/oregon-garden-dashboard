@@ -15,7 +15,7 @@ import pandas as pd
 import pytz
 from datetime import datetime, timedelta
 from apscheduler.schedulers.background import BackgroundScheduler
-# from scripts.ingest_forecast import run_forecast_ingest
+##from scripts.ingest_forecast import run_forecast_ingest
 
 # Initialize the app
 app = dash.Dash(__name__)
@@ -114,6 +114,25 @@ app.index_string = f"""
             text-transform: uppercase;
             color: rgba(245,240,232,0.5);
         }}
+        .mag-date-block {{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 28px;
+            border-left: 1px solid rgba(255,255,255,0.1);
+        }}
+        .mag-date-dow {{
+            font-size: 0.6rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(245,240,232,0.5);
+        }}
+        .mag-date-full {{
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: rgba(245,240,232,0.9);
+            line-height: 1.2;
+        }}
 
         /* ── Body layout ── */
         .mag-body {{
@@ -210,15 +229,16 @@ app.index_string = f"""
             border-radius: 0 2px 2px 0;
         }}
         .sb-freeze-label {{
-            font-size: 0.58rem;
+            font-size: 0.62rem;
             letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: {COLORS["muted"]};
-            margin-bottom: 4px;
+            color: {COLORS["terracotta"]};
+            font-weight: 700;
+            margin-bottom: 6px;
         }}
         .sb-freeze-date {{
             font-family: 'Playfair Display', serif;
-            font-size: 1.2rem;
+            font-size: 1.45rem;
             color: {COLORS["text"]};
         }}
         .sb-freeze-sub {{
@@ -336,6 +356,8 @@ app.layout = html.Div([
             html.Div("Intelligence · 2026", className="mag-flag-sub"),
         ], className="mag-flag"),
 
+        html.Div(id="header-date", className="mag-date-block"),
+
         html.Div([
             html.Div("Viewing", className="mag-city-label"),
             dcc.Dropdown(
@@ -382,15 +404,6 @@ app.layout = html.Div([
                 dcc.Graph(id="forecast-chart", config={"displayModeBar": False}),
             ], className="chart-panel"),
 
-            # Seasonal conditions
-            html.Div([
-                html.Div([
-                    html.Span("Seasonal Conditions"),
-                    html.Span("Sunrise · Sunset · Twilight · Shallow Soil Temp"),
-                ], className="sec-hed"),
-                dcc.Graph(id="seasonal-chart", config={"displayModeBar": False}),
-            ], className="chart-panel"),
-
             html.Hr(className="sec-divider"),
 
             # Planting Gantt
@@ -400,6 +413,15 @@ app.layout = html.Div([
                     html.Span("Historical norm · Full year"),
                 ], className="sec-hed"),
                 dcc.Graph(id="gantt-chart", config={"displayModeBar": False}),
+            ], className="chart-panel"),
+
+            # Seasonal conditions
+            html.Div([
+                html.Div([
+                    html.Span("Seasonal Conditions"),
+                    html.Span("Sunrise · Sunset · Twilight · Shallow Soil Temp"),
+                ], className="sec-hed"),
+                dcc.Graph(id="seasonal-chart", config={"displayModeBar": False}),
             ], className="chart-panel"),
 
         ], className="mag-main"),
@@ -440,6 +462,17 @@ app.layout = html.Div([
             dcc.Dropdown(
                 id="harvest-type-filter",
                 placeholder="Filter by Type",
+                clearable=True,
+                style={"marginBottom": "7px", "fontSize": "0.78rem"},
+            ),
+            dcc.Dropdown(
+                id="pollinator-filter",
+                placeholder="Filter by Pollinator",
+                options=[
+                    {"label": "🐝 Attracts Bees",         "value": "bees"},
+                    {"label": "🦋 Attracts Butterflies",   "value": "butterflies"},
+                    {"label": "🌺 Attracts Hummingbirds",  "value": "hummingbirds"},
+                ],
                 clearable=True,
                 style={"marginBottom": "10px", "fontSize": "0.78rem"},
             ),
@@ -546,6 +579,19 @@ def populate_city_dropdown(_):
     ).fetchall()
     con.close()
     return [{"label": r[0], "value": r[0]} for r in cities], "Portland"
+
+
+# ── Header date ──────────────────────────────────────────────────────────────
+@app.callback(
+    Output("header-date", "children"),
+    Input("city-dropdown", "id"),
+)
+def update_header_date(_):
+    now = datetime.now()
+    return [
+        html.Div(now.strftime("%A"), className="mag-date-dow"),
+        html.Div(now.strftime("%B %d, %Y"), className="mag-date-full"),
+    ]
 
 
 # ── Today's stats bar ─────────────────────────────────────────────────────────
@@ -856,7 +902,7 @@ def update_seasonal_chart(selected_city):
     """, [selected_city]).df()
 
     soil = con.execute("""
-        SELECT date, avg_shallow_soil_temp
+        SELECT date, avg_shallow_soil_temp, avg_min_temp, avg_max_temp
         FROM daily_data
         WHERE city = ?
         ORDER BY date
@@ -929,13 +975,42 @@ def update_seasonal_chart(selected_city):
             opacity=0.85,
         ))
 
-    # Shallow soil temp — secondary Y axis
+    # Avg temp band + soil temp — secondary Y axis (0–100°F)
     if not soil.empty:
         soil["date"] = pd.to_datetime(soil["date"])
+        # Shaded avg temp band (high/low)
+        fig.add_trace(go.Scatter(
+            x=pd.concat([soil["date"], soil["date"][::-1]]),
+            y=pd.concat([soil["avg_max_temp"], soil["avg_min_temp"][::-1]]),
+            fill="toself",
+            fillcolor="rgba(196,98,45,0.08)",
+            line=dict(width=0),
+            name="Avg Temp Range",
+            showlegend=True,
+            hoverinfo="skip",
+            yaxis="y2",
+        ))
+        # Avg high
+        fig.add_trace(go.Scatter(
+            x=soil["date"], y=soil["avg_max_temp"],
+            mode="lines", name="Avg High °F",
+            line=dict(color=COLORS["terracotta"], width=1.5, dash="dot"),
+            opacity=0.7,
+            yaxis="y2",
+        ))
+        # Avg low
+        fig.add_trace(go.Scatter(
+            x=soil["date"], y=soil["avg_min_temp"],
+            mode="lines", name="Avg Low °F",
+            line=dict(color=COLORS["slate"], width=1.5, dash="dot"),
+            opacity=0.7,
+            yaxis="y2",
+        ))
+        # Shallow soil temp
         fig.add_trace(go.Scatter(
             x=soil["date"], y=soil["avg_shallow_soil_temp"],
             mode="lines", name="Shallow Soil °F",
-            line=dict(color=COLORS["moss"], width=2.5),
+            line=dict(color=COLORS["moss"], width=2),
             opacity=0.9,
             yaxis="y2",
         ))
@@ -982,13 +1057,14 @@ def update_seasonal_chart(selected_city):
             xanchor="right",
         )
 
-    # Y axis: decimal hours formatted as time labels
-    tick_vals = [5, 6, 7, 8, 9, 10, 12, 14, 17, 19, 20, 21]
-    tick_text = ["5am", "6am", "7am", "8am", "9am", "10am", "12pm", "2pm", "5pm", "7pm", "8pm", "9pm"]
+    # Left Y axis: time of day (0–24h), midnight at top
+    tick_vals = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24]
+    tick_text = ["12am", "2am", "4am", "6am", "8am", "10am",
+                 "12pm", "2pm", "4pm", "6pm", "8pm", "10pm", "12am"]
 
     fig.update_layout(**CHART_LAYOUT)
     fig.update_layout(
-        height=280,
+        height=420,
         margin=dict(l=10, r=60, t=20, b=20),
         xaxis=dict(showgrid=False, zeroline=False),
         yaxis=dict(
@@ -997,15 +1073,16 @@ def update_seasonal_chart(selected_city):
             gridcolor="#f0e8d8",
             zeroline=False,
             title="Time of Day",
-            autorange="reversed",
-            range=[21.5, 4.5],
+            range=[24, 0],
         ),
         yaxis2=dict(
-            title="Soil °F",
+            title="°F",
             overlaying="y",
             side="right",
             showgrid=False,
-            color=COLORS["moss"],
+            range=[0, 100],
+            tickvals=[0, 20, 40, 60, 80, 100],
+            color=COLORS["muted"],
         ),
         legend=dict(orientation="h", y=1.08, x=0, font=dict(size=10)),
     )
@@ -1041,8 +1118,9 @@ def update_freeze_date(selected_city):
     Input("city-dropdown", "value"),
     Input("growing-season-filter", "value"),
     Input("harvest-type-filter", "value"),
+    Input("pollinator-filter", "value"),
 )
-def update_plant_table(selected_city, growing_season, harvest_type):
+def update_plant_table(selected_city, growing_season, harvest_type, pollinator):
     if not selected_city:
         return [], [], [], []
     con = get_con()
@@ -1058,7 +1136,10 @@ def update_plant_table(selected_city, growing_season, harvest_type):
             harvest_type AS "Type",
             CASE WHEN direct_sow THEN 'Direct'
                  ELSE CAST(weeks_indoor_before_transplant AS VARCHAR) || 'wk'
-            END AS "Sow"
+            END AS "Sow",
+            CASE WHEN attracts_bees        THEN '🐝' ELSE '' END ||
+            CASE WHEN attracts_butterflies THEN '🦋' ELSE '' END ||
+            CASE WHEN attracts_hummingbirds THEN '🌺' ELSE '' END AS "Pollinators"
         FROM plants WHERE 1=1
     """
     params = []
@@ -1066,6 +1147,12 @@ def update_plant_table(selected_city, growing_season, harvest_type):
         query += " AND growing_season = ?"; params.append(growing_season)
     if harvest_type:
         query += " AND harvest_type = ?"; params.append(harvest_type)
+    if pollinator == "bees":
+        query += " AND attracts_bees = true"
+    elif pollinator == "butterflies":
+        query += " AND attracts_butterflies = true"
+    elif pollinator == "hummingbirds":
+        query += " AND attracts_hummingbirds = true"
     query += " ORDER BY common_name"
     df = con.execute(query, params).df()
     con.close()
@@ -1121,6 +1208,7 @@ def update_plant_cards(selected_city, selected_plants):
     ph = ",".join(["?"] * len(selected_plants))
     plants = con.execute(f"""
         SELECT common_name, plant_family, min_viable_temp_f, max_viable_temp_f,
+               attracts_bees, attracts_butterflies, attracts_hummingbirds,
                CASE WHEN direct_sow THEN 'Direct Sow'
                     ELSE CAST(weeks_indoor_before_transplant AS VARCHAR) || ' wks indoor'
                END AS sow_method
@@ -1146,6 +1234,14 @@ def update_plant_cards(selected_city, selected_plants):
                 f"{viable_days}/7 ✓" if good else f"{viable_days}/7 ✗",
                 className="plant-card-viable-good" if good else "plant-card-viable-bad",
             ),
+            html.Span(
+                " ".join(filter(None, [
+                    "🐝" if plant.get("attracts_bees") else "",
+                    "🦋" if plant.get("attracts_butterflies") else "",
+                    "🌺" if plant.get("attracts_hummingbirds") else "",
+                ])),
+                style={"fontSize": "0.7rem", "display": "block", "marginTop": "2px"},
+            ),
         ], className="plant-card"))
 
     return cards
@@ -1161,10 +1257,48 @@ def update_gantt(selected_city, selected_plants):
     if not selected_city:
         return {}
     if not selected_plants:
-        fig = go.Figure()
+        year = datetime.now().year
+        today_str = datetime.now().strftime("%Y-%m-%d")
+        # Dummy invisible scatter to force datetime x-axis type
+        fig = go.Figure(go.Scatter(
+            x=[f"{year}-01-01", f"{year}-12-31"],
+            y=[0, 0],
+            mode="markers",
+            marker=dict(opacity=0),
+            showlegend=False,
+            hoverinfo="skip",
+        ))
+        fig.update_layout(**CHART_LAYOUT)
         fig.update_layout(
-            **CHART_LAYOUT, height=120,
-            title="Select plants from the sidebar to see planting windows",
+            height=120,
+            xaxis=dict(
+                range=[f"{year}-01-01", f"{year}-12-31"],
+                tickformat="%b",
+                dtick="M1",
+                ticklabelmode="period",
+                showgrid=True,
+                gridcolor="#f0e8d8",
+                zeroline=False,
+            ),
+            yaxis=dict(visible=False, range=[-1, 1]),
+            annotations=[dict(
+                text="Select plants from the sidebar to see planting windows",
+                xref="paper", yref="paper", x=0.5, y=0.5,
+                showarrow=False,
+                font=dict(size=12, color=COLORS["muted"], family="Lato"),
+            )],
+        )
+        fig.add_shape(
+            type="line", xref="x", yref="paper",
+            x0=today_str, x1=today_str, y0=0, y1=1,
+            line=dict(color=COLORS["terracotta"], width=1.5, dash="dash"),
+            opacity=0.8,
+        )
+        fig.add_annotation(
+            x=today_str, xref="x", yref="paper", y=1.02,
+            text="Today", showarrow=False,
+            font=dict(size=9, color=COLORS["terracotta"]),
+            xanchor="center",
         )
         return fig
 
@@ -1172,7 +1306,8 @@ def update_gantt(selected_city, selected_plants):
     ph = ",".join(["?"] * len(selected_plants))
     df = con.execute(f"""
         SELECT p.common_name, p.growing_season,
-               pg.planting_start, pg.outdoor_start, pg.planting_end
+               pg.planting_start, pg.outdoor_start, pg.planting_end,
+               p.attracts_bees, p.attracts_butterflies, p.attracts_hummingbirds
         FROM plants p
         JOIN planting_gantt pg
           ON p.growing_season = pg.growing_season
@@ -1189,6 +1324,7 @@ def update_gantt(selected_city, selected_plants):
         df[col] = pd.to_datetime(df[col])
 
     rows = []
+    pollinator_labels = {}  # common_name -> emoji string
     for _, row in df.iterrows():
         if row["planting_start"] < row["outdoor_start"]:
             rows.append({
@@ -1201,6 +1337,13 @@ def update_gantt(selected_city, selected_plants):
             "Start": row["outdoor_start"], "Finish": row["planting_end"],
             "Segment": "Outdoor",
         })
+        icons = "".join(filter(None, [
+            "🐝" if row.get("attracts_bees") else "",
+            "🦋" if row.get("attracts_butterflies") else "",
+            "🌺" if row.get("attracts_hummingbirds") else "",
+        ]))
+        if icons:
+            pollinator_labels[row["common_name"]] = {"icons": icons}
 
     tdf = pd.DataFrame(rows)
     fig = px.timeline(
@@ -1212,21 +1355,50 @@ def update_gantt(selected_city, selected_plants):
     )
     fig.update_yaxes(autorange="reversed")
 
-    # Today marker
-    today_timestamp = datetime.now().timestamp()  # Convert current datetime to timestamp
-
-    fig.add_vline(
-        x=today_timestamp,  # Pass the timestamp (numeric value)
-        line=dict(color=COLORS["terracotta"], width=1.5, dash="dash"),
-        annotation_text="Today",
-        annotation_position="top",
-        annotation_font=dict(size=9, color=COLORS["terracotta"]),
+    # Static full-year x-axis — always Jan 1 to Dec 31 of current year
+    year = datetime.now().year
+    fig.update_xaxes(
+        range=[f"{year}-01-01", f"{year}-12-31"],
+        tickformat="%b",
+        dtick="M1",
+        ticklabelmode="period",
+        showgrid=True,
+        gridcolor="#f0e8d8",
+        zeroline=False,
     )
 
+    # Pollinator icons — fixed just right of y-axis labels, one per plant row
+    for plant_name, info in pollinator_labels.items():
+        fig.add_annotation(
+            x=0, xref="paper",
+            y=plant_name, yref="y",
+            text=info["icons"],
+            showarrow=False,
+            font=dict(size=11),
+            xanchor="right",
+            yanchor="middle",
+            xshift=-90,
+        )
+
+    # Today marker
+    today_str = datetime.now().strftime("%Y-%m-%d")
+    fig.add_shape(
+        type="line", xref="x", yref="paper",
+        x0=today_str, x1=today_str, y0=0, y1=1,
+        line=dict(color=COLORS["terracotta"], width=1.5, dash="dash"),
+        opacity=0.8,
+    )
+    fig.add_annotation(
+        x=today_str, xref="x", yref="paper", y=1.02,
+        text="Today", showarrow=False,
+        font=dict(size=9, color=COLORS["terracotta"]),
+        xanchor="center",
+    )
+
+    fig.update_layout(**CHART_LAYOUT)
     fig.update_layout(
-        **CHART_LAYOUT,
         height=max(160, len(selected_plants) * 46),
-        margin=dict(l=10, r=10, t=30, b=20),
+        margin=dict(l=120, r=10, t=30, b=20),
     )
     return fig
 
